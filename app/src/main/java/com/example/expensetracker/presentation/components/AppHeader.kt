@@ -14,6 +14,9 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import com.example.expensetracker.ui.theme.MediumGreen
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -27,7 +30,10 @@ fun AppHeader(
         title = {
             Text(
                 text = title,
-                style = MaterialTheme.typography.titleLarge
+                style = TextStyle(
+                    fontFamily = MaterialTheme.typography.titleLarge.fontFamily,
+                    fontWeight = FontWeight.Bold,
+                )
             )
         },
         navigationIcon = {
