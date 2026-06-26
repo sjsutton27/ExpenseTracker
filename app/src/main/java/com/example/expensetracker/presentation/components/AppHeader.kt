@@ -14,7 +14,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
@@ -55,10 +54,12 @@ fun AppHeader(
                 }
             }
         },
-        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+        colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MediumGreen,
+            scrolledContainerColor = Color.Unspecified,
+            navigationIconContentColor = Color.White,
             titleContentColor = Color.White,
-            navigationIconContentColor = Color.White
+            actionIconContentColor = Color.Unspecified
         ),
         modifier = modifier.fillMaxWidth()
     )
