@@ -11,8 +11,10 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.expensetracker.R
 import com.example.expensetracker.data.model.BottomNavItem
 
 @Composable
@@ -24,20 +26,20 @@ fun BottomNavBar(
 
     val navItems = listOf(
         BottomNavItem(
-            route = "dashboard",
-            title = "Dashboard",
+            route = stringResource(id = R.string.route_dashboard),
+            title = stringResource(id = R.string.label_dashboard),
             icon = Icons.Default.AccountBalance
         ), BottomNavItem(
-            route = "expenses",
-            title = "Expenses",
+            route = stringResource(id = R.string.route_expenses),
+            title = stringResource(id = R.string.label_expenses),
             icon = Icons.Default.Receipt
         ), BottomNavItem(
-            route = "budget",
-            title = "Budget",
+            route = stringResource(id = R.string.route_budget),
+            title = stringResource(id = R.string.label_budget),
             icon = Icons.Default.AccountBalanceWallet
         ),BottomNavItem(
-            route = "profile",
-            title = "Profile",
+            route = stringResource(id = R.string.route_profile),
+            title = stringResource(id = R.string.label_profile),
             icon = Icons.Default.Person
         )
     )

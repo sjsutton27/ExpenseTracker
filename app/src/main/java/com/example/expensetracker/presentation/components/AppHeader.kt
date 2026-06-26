@@ -1,10 +1,8 @@
 package com.example.expensetracker.presentation.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material3.AlertDialogDefaults.titleContentColor
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -15,10 +13,13 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.expensetracker.R
 import com.example.expensetracker.ui.theme.MediumGreen
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -33,9 +34,10 @@ fun AppHeader(
         title = {
             Text(
                 text = title,
-                style = TextStyle(
-                    fontFamily = MaterialTheme.typography.titleLarge.fontFamily,
+                style = MaterialTheme.typography.titleLarge.copy(
+                    fontFamily = FontFamily.Cursive,
                     fontWeight = FontWeight.Bold,
+                    fontSize = 40.sp
                 )
             )
         },
@@ -48,7 +50,7 @@ fun AppHeader(
                 ) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = "Back"
+                        contentDescription = stringResource(id = R.string.cd_back)
                     )
                 }
             }
