@@ -4,11 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.ui.Modifier
-import com.example.expensetracker.presentation.screens.dashboard.DashboardScreen
+import androidx.compose.material3.Scaffold
+import androidx.navigation.compose.rememberNavController
+import com.example.expensetracker.navigation.BottomBarNavGraph
+import com.example.expensetracker.presentation.components.BottomNavBar
 import com.example.expensetracker.ui.theme.ExpenseTrackerTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,11 +16,16 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ExpenseTrackerTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    DashboardScreen()
+                val navController = rememberNavController()
+                Scaffold(
+                    bottomBar = {
+                        BottomNavBar(navController = navController)
+                    },
+                ){padding ->
+                    BottomBarNavGraph(
+                        navController = navController,
+                        paddingValues = padding
+                    )
                 }
             }
         }

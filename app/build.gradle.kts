@@ -67,6 +67,8 @@ dependencies {
     //For UI
     implementation(libs.androidx.recyclerview)
     implementation(libs.google.material)
-
+    //Icons
     implementation(libs.androidx.compose.material.icons.extended)
+
+    implementation(libs.androidx.navigation.compose)
 }

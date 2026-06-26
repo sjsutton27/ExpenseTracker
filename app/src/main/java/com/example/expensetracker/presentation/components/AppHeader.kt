@@ -1,6 +1,7 @@
 package com.example.expensetracker.presentation.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.AlertDialogDefaults.titleContentColor
@@ -17,14 +18,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.expensetracker.ui.theme.MediumGreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppHeader(
     title: String,
-    showBackButton: Boolean = false,
-    onBackClick: () -> Unit = {}
+    showBackButton: Boolean,
+    navController : NavController,
+    modifier: Modifier = Modifier
 ) {
     CenterAlignedTopAppBar(
         title = {
@@ -38,7 +41,11 @@ fun AppHeader(
         },
         navigationIcon = {
             if (showBackButton) {
-                IconButton(onClick = onBackClick) {
+                IconButton(
+                    onClick = {
+                        navController.popBackStack()
+                    }
+                ) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "Back"
@@ -51,6 +58,6 @@ fun AppHeader(
             titleContentColor = Color.White,
             navigationIconContentColor = Color.White
         ),
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     )
 }
