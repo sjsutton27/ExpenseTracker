@@ -2,17 +2,38 @@
     <string name="app_name">ExpenseTracker</string>
 
     <!-- App Labels -->
-    <string name="label_dashboard">Dashboard</string>
-    <string name="label_expenses">Expenses</string>
-    <string name="label_budget">Budget</string>
-    <string name="label_profile">Profile</string>
+    <string name="label_dashboard">DASHBOARD</string>
+    <string name="label_expenses">EXPENSES</string>
+    <string name="label_budget">BUDGET</string>
+    <string name="label_profile">PROFILE</string>
+    <string name="label_logout">LOGOUT</string>
+    <string name="label_login">LOGIN</string>
+    <string name="label_signup">SIGNUP</string>
+
+    <!-- Form Labels -->
+    <string name="label_email">Email</string>
+    <string name="label_password">Password</string>
+    <string name="label_confirm_password">Confirm Password</string>
+
+    <!-- Feedback Messages -->
+    <string name="msg_login_success">Login Successful</string>
+    <string name="msg_login_failed">Login Failed</string>
+    <string name="msg_signup_success">Sign Up Successful</string>
+    <string name="msg_signup_failed">Sign Up Failed</string>
+
+    <!-- Screen Texts -->
+    <string name="txt_dont_have_account">Don\'t have an account? Click here to Sign Up</string>
+    <string name="txt_already_have_account">Already have an account? Click here to Login</string>
 
     <!-- Navigation Routes -->
     <string name="route_dashboard">dashboard</string>
     <string name="route_expenses">expenses</string>
     <string name="route_budget">budget</string>
     <string name="route_profile">profile</string>
+    <string name="route_login">login</string>
+    <string name="route_signup">signup</string>
 
     <!-- General Accessibility -->
     <string name="cd_back">Back</string>
+    <string name="cd_logout">Logout</string>
 </resources>
