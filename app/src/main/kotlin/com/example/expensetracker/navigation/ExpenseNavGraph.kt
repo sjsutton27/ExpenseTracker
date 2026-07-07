@@ -12,8 +12,8 @@ import com.example.expensetracker.R
 import com.example.expensetracker.presentation.screens.budgets.BudgetScreen
 import com.example.expensetracker.presentation.screens.dashboard.DashboardScreen
 import com.example.expensetracker.presentation.screens.expenses.ExpensesScreen
-import com.example.expensetracker.presentation.screens.login.LoginScreen
-import com.example.expensetracker.presentation.screens.login.SignUpScreen
+import com.example.expensetracker.presentation.screens.authentication.LoginScreen
+import com.example.expensetracker.presentation.screens.authentication.SignUpScreen
 import com.example.expensetracker.presentation.screens.profile.ProfileScreen
 import com.google.firebase.auth.FirebaseAuth
 
