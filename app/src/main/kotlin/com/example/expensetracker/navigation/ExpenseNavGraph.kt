@@ -9,7 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.expensetracker.R
-import com.example.expensetracker.presentation.screens.budgets.BudgetScreen
+import com.example.expensetracker.presentation.screens.income.IncomeScreen
 import com.example.expensetracker.presentation.screens.dashboard.DashboardScreen
 import com.example.expensetracker.presentation.screens.expenses.ExpensesScreen
 import com.example.expensetracker.presentation.screens.authentication.LoginScreen
@@ -26,7 +26,7 @@ fun ExpenseNavGraph(
     val signupRoute = stringResource(id = R.string.route_signup)
     val dashboardRoute = stringResource(id = R.string.route_dashboard)
     val expensesRoute = stringResource(id = R.string.route_expenses)
-    val budgetRoute = stringResource(id = R.string.route_budget)
+    val incomeRoute = stringResource(id = R.string.route_income)
     val profileRoute = stringResource(id = R.string.route_profile)
 
     val currentUser = FirebaseAuth.getInstance().currentUser
@@ -49,8 +49,8 @@ fun ExpenseNavGraph(
         composable(route = expensesRoute) {
             ExpensesScreen(navController = navController)
         }
-        composable(route = budgetRoute) {
-            BudgetScreen(navController = navController)
+        composable(route = incomeRoute) {
+            IncomeScreen(navController = navController)
         }
         composable(route = profileRoute) {
             ProfileScreen(navController = navController)

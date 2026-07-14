@@ -1,4 +1,4 @@
-package com.example.expensetracker.presentation.screens.budgets
+package com.example.expensetracker.presentation.screens.income
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,12 +10,12 @@ import com.example.expensetracker.R
 import com.example.expensetracker.presentation.components.AppHeader
 
 @Composable
-fun BudgetScreen(
+fun IncomeScreen(
     navController: NavController
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
         AppHeader(
-            title = stringResource(id = R.string.label_budget),
+            title = stringResource(id = R.string.label_income),
             showBackButton = true,
             navController = navController
         )

@@ -4,7 +4,7 @@
     <!-- App Labels -->
     <string name="label_dashboard">DASHBOARD</string>
     <string name="label_expenses">EXPENSES</string>
-    <string name="label_budget">BUDGET</string>
+    <string name="label_income">INCOME</string>
     <string name="label_profile">PROFILE</string>
     <string name="label_logout">LOGOUT</string>
     <string name="label_login">LOGIN</string>
@@ -28,7 +28,7 @@
     <!-- Navigation Routes -->
     <string name="route_dashboard">dashboard</string>
     <string name="route_expenses">expenses</string>
-    <string name="route_budget">budget</string>
+    <string name="route_income">income</string>
     <string name="route_profile">profile</string>
     <string name="route_login">login</string>
     <string name="route_signup">signup</string>

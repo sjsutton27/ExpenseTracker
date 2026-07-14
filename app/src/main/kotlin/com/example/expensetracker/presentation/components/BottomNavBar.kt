@@ -34,8 +34,8 @@ fun BottomNavBar(
             title = stringResource(id = R.string.label_expenses),
             icon = Icons.Default.Receipt
         ), BottomNavItem(
-            route = stringResource(id = R.string.route_budget),
-            title = stringResource(id = R.string.label_budget),
+            route = stringResource(id = R.string.route_income),
+            title = stringResource(id = R.string.label_income),
             icon = Icons.Default.AccountBalanceWallet
         ),BottomNavItem(
             route = stringResource(id = R.string.route_profile),
