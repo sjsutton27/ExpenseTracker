@@ -43,7 +43,7 @@ class SignUpViewModel : ViewModel() {
     }
     
     private fun validateEmail(email: String): Boolean {
-        val emailRegex = Regex("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")
+        val emailRegex = Regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.com$")
         return email.matches(emailRegex)
     }
     
