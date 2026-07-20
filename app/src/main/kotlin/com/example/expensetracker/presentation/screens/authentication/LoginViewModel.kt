@@ -3,52 +3,28 @@ package com.example.expensetracker.presentation.screens.authentication
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.expensetracker.common.Resource
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.auth.FirebaseAuthInvalidUserException
+import com.example.expensetracker.data.repository.AuthRepositoryImpl
+import com.example.expensetracker.domain.use_case.LoginUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 /**
  * TODO: Need to make sure when the app is exited need to logout the user
  * TODO: Inactivity to log out the user
  */
-class LoginViewModel : ViewModel() {
+class LoginViewModel(
+    private val loginUseCase: LoginUseCase = LoginUseCase(repository = AuthRepositoryImpl())
+) : ViewModel() {
 
-    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-
-    private val _loginState = MutableStateFlow<Resource<String>?>(null)
+    private val _loginState = MutableStateFlow<Resource<String>?>(value = null)
     val loginState: StateFlow<Resource<String>?> = _loginState
 
     fun login(email: String, password: String) {
-        val errorMessage = when {
-            email.isBlank() || password.isBlank() -> "Email and password cannot be empty"
-            else -> null
-        }
-
-        if (errorMessage != null) {
-            _loginState.value = Resource.Error(errorMessage)
-            return
-        }
-
-        _loginState.value = Resource.Loading()
-        viewModelScope.launch {
-            auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        _loginState.value = Resource.Success("Login Successful")
-                    } else {
-                        val exception = task.exception
-                        val loginErrorMessage = when (exception) {
-                            is FirebaseAuthInvalidUserException -> "Invalid Email. Please Sign Up or try again."
-                            is FirebaseAuthInvalidCredentialsException -> "Incorrect password. Please try again."
-                            else -> exception?.message ?: "Login Failed"
-                        }
-                        _loginState.value = Resource.Error(loginErrorMessage)
-                    }
-                }
-        }
+        loginUseCase(email, password).onEach { result ->
+            _loginState.value = result
+        }.launchIn(viewModelScope)
     }
 
     fun resetState() {

@@ -41,12 +41,12 @@ fun LoginScreen(
     val loginRoute = stringResource(id = R.string.route_login)
     val signupRoute = stringResource(id = R.string.route_signup)
 
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf(value = "") }
+    var password by remember { mutableStateOf(value = "") }
 
     val loginState by viewModel.loginState.collectAsState()
 
-    LaunchedEffect(loginState) {
+    LaunchedEffect(key1 = loginState) {
         when (loginState) {
             is Resource.Success -> {
                 Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
