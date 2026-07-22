@@ -2,14 +2,16 @@ package com.example.expensetracker.domain.use_case
 
 import com.example.expensetracker.common.Resource
 import com.example.expensetracker.domain.repository.AuthRepository
-import com.example.expensetracker.domain.util.ValidEmail
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import com.example.expensetracker.domain.util.ValidEmail
 
-class LoginUseCase(private val repository: AuthRepository) {
-    operator fun invoke(email: String, password: String): Flow<Resource<String>> {
+class ForgotPasswordUseCase(
+    private val repository: AuthRepository
+) {
+    operator fun invoke(email: String): Flow<Resource<String>> {
         val errorMessage = when {
-            email.isBlank() || password.isBlank() -> "Email and password cannot be empty"
+            email.isBlank() -> "Email cannot be empty"
             !ValidEmail.isValid(email) -> "Invalid email format"
             else -> null
         }
@@ -19,6 +21,6 @@ class LoginUseCase(private val repository: AuthRepository) {
                 emit(value = Resource.Error(errorMessage))
             }
         }
-        return repository.login(email, password)
+        return repository.forgotPassword(email)
     }
 }

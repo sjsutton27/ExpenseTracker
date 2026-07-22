@@ -25,12 +25,15 @@ class MainActivity : ComponentActivity() {
 
                 val loginRoute = stringResource(id = R.string.route_login)
                 val signupRoute = stringResource(id = R.string.route_signup)
+                val forgotPasswordRoute = stringResource(id = R.string.route_forgot_password)
+
 
                 // Only show bottom bar if we are NOT on auth screens
                 // And wait for currentRoute to be non-null to avoid flicker
                 val showBottomBar = currentRoute != null && 
                                    currentRoute != loginRoute && 
-                                   currentRoute != signupRoute
+                                   currentRoute != signupRoute &&
+                                   currentRoute != forgotPasswordRoute
 
                 Scaffold(
                     bottomBar = {

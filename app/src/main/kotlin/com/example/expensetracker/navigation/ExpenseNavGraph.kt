@@ -9,11 +9,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.expensetracker.R
+import com.example.expensetracker.presentation.screens.authentication.reset_password.ForgotPasswordScreen
 import com.example.expensetracker.presentation.screens.income.IncomeScreen
 import com.example.expensetracker.presentation.screens.dashboard.DashboardScreen
 import com.example.expensetracker.presentation.screens.expenses.ExpensesScreen
-import com.example.expensetracker.presentation.screens.authentication.LoginScreen
-import com.example.expensetracker.presentation.screens.authentication.SignUpScreen
+import com.example.expensetracker.presentation.screens.authentication.login.LoginScreen
+import com.example.expensetracker.presentation.screens.authentication.sign_up.SignUpScreen
 import com.example.expensetracker.presentation.screens.profile.ProfileScreen
 import com.google.firebase.auth.FirebaseAuth
 
@@ -24,6 +25,7 @@ fun ExpenseNavGraph(
 ) {
     val loginRoute = stringResource(id = R.string.route_login)
     val signupRoute = stringResource(id = R.string.route_signup)
+    val forgotPasswordRoute = stringResource(id = R.string.route_forgot_password)
     val dashboardRoute = stringResource(id = R.string.route_dashboard)
     val expensesRoute = stringResource(id = R.string.route_expenses)
     val incomeRoute = stringResource(id = R.string.route_income)
@@ -42,6 +44,9 @@ fun ExpenseNavGraph(
         }
         composable(route = signupRoute) {
             SignUpScreen(navController = navController)
+        }
+        composable(route = forgotPasswordRoute) {
+            ForgotPasswordScreen(navController = navController)
         }
         composable(route = dashboardRoute) {
             DashboardScreen(navController = navController)

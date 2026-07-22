@@ -2,6 +2,7 @@ package com.example.expensetracker.domain.use_case
 
 import com.example.expensetracker.common.Resource
 import com.example.expensetracker.domain.repository.AuthRepository
+import com.example.expensetracker.domain.util.ValidEmail
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -9,7 +10,7 @@ class SignUpUseCase(private val repository: AuthRepository) {
     operator fun invoke(email: String, password: String, confirmPassword: String): Flow<Resource<String>> {
         val errorMessage = when {
             email.isBlank() || password.isBlank() || confirmPassword.isBlank() -> "Fields cannot be empty"
-            !validateEmail(email) -> "Invalid email format"
+            !ValidEmail.isValid(email) -> "Invalid email format"
             password != confirmPassword -> "Passwords do not match"
             !validatePassword(password) -> "Password must contain at least one uppercase letter, one number, and one special character"
             else -> null
@@ -17,16 +18,11 @@ class SignUpUseCase(private val repository: AuthRepository) {
 
         if (errorMessage != null) {
             return flow {
-                emit(Resource.Error(errorMessage))
+                emit(value = Resource.Error(errorMessage))
             }
         }
 
         return repository.signUp(email, password)
-    }
-
-    private fun validateEmail(email: String): Boolean {
-        val emailRegex = Regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.com$")
-        return email.matches(emailRegex)
     }
 
     private fun validatePassword(password: String): Boolean {

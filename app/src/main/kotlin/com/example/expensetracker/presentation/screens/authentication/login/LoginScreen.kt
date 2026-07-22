@@ -1,6 +1,8 @@
-package com.example.expensetracker.presentation.screens.authentication
+package com.example.expensetracker.presentation.screens.authentication.login
 
+import android.R.attr.onClick
 import android.widget.Toast
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -25,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -40,6 +43,7 @@ fun LoginScreen(
     val dashboardRoute = stringResource(id = R.string.route_dashboard)
     val loginRoute = stringResource(id = R.string.route_login)
     val signupRoute = stringResource(id = R.string.route_signup)
+    val forgotPasswordRoute = stringResource(id = R.string.route_forgot_password)
 
     var email by remember { mutableStateOf(value = "") }
     var password by remember { mutableStateOf(value = "") }
@@ -122,6 +126,19 @@ fun LoginScreen(
                 Text(text = stringResource(id = R.string.label_signup).lowercase().replaceFirstChar { char -> char.uppercase() })
             }
 
+            Spacer(modifier = Modifier.padding(all = 16.dp))
+            Text(
+                text = stringResource(id = R.string.txt_forgot_password),
+                color = MaterialTheme.colorScheme.primary,
+                textDecoration = TextDecoration.Underline,
+                modifier = Modifier
+                    .clickable(
+                    onClick = {
+                        navController.navigate(route = forgotPasswordRoute)
+                        viewModel.resetState()
+                    }
+                )
+            )
         }
     }
 }
