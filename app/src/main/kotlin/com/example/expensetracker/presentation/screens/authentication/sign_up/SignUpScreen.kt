@@ -46,7 +46,7 @@ fun SignUpScreen(
 
     val signUpState by viewModel.signUpState.collectAsState()
 
-    LaunchedEffect(signUpState) {
+    LaunchedEffect(key1 = signUpState) {
         when (signUpState) {
             is Resource.Success -> {
                 Toast.makeText(context, "Sign Up Successful", Toast.LENGTH_SHORT).show()

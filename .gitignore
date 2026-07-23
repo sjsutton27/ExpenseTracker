@@ -13,3 +13,7 @@
 .externalNativeBuild
 .cxx
 local.properties
+.artifacts/39f5a34a-5ea8-45a3-88fa-f10c61f6b498/implementation_plan.artifact.md
+.artifacts/5b2e5060-08ea-4353-86b1-5051c76c5510/implementation_plan.artifact.md
+.artifacts/5b2e5060-08ea-4353-86b1-5051c76c5510/walkthrough.artifact.md
+.artifacts/b437f1b3-2506-41b7-9577-6ce4cc144946/implementation_plan.artifact.md
