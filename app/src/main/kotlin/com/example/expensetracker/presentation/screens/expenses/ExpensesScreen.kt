@@ -39,11 +39,12 @@ import com.example.expensetracker.data.model.ExpenseItem
 import com.example.expensetracker.presentation.components.AppHeader
 import com.example.expensetracker.presentation.components.ExpenseCard
 import com.example.expensetracker.ui.theme.MediumGreen
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ExpensesScreen(
     navController: NavController,
-    viewModel: ExpensesViewModel = viewModel()
+    viewModel: ExpensesViewModel = koinViewModel()
 ) {
     val context = LocalContext.current
     val expenses by viewModel.expenses.collectAsState()
@@ -153,35 +154,7 @@ fun ExpensesScreen(
                     }
                 }
 
-                items(
-                    items = expenses,
-                    key = { expense ->
-                        expense.id
-                    }
-                ) { expense ->
-                    ExpenseCard(
-                        expense = expense,
-                        isEditing = editingExpenseId == expense.id,
-                        onEditClick = {
-                            editingExpenseId = expense.id
-                        },
-                        onCancelEdit = {
-                            editingExpenseId = null
-                        },
-                        onSaveEdit = { updatedExpense ->
-                            viewModel.updateExpense(
-                                expense = updatedExpense
-                            )
-                        },
-                        onDeleteClick = {
-                            viewModel.deleteExpense(
-                                id = expense.id
-                            )
-                        }
-                    )
-                }
-
-                // Add Expense Card
+                // Add Expense Card at the top
                 if (getExpensesState !is Resource.Loading) {
                     item {
                         if (addingExpense) {
@@ -203,7 +176,8 @@ fun ExpensesScreen(
                         } else {
                             Box(
                                 modifier = Modifier
-                                    .fillMaxWidth(),
+                                    .fillMaxWidth()
+                                    .padding(vertical = 8.dp),
                                 contentAlignment = Alignment.Center
                             ) {
                                 IconButton(
@@ -228,10 +202,38 @@ fun ExpensesScreen(
                         }
                         Spacer(
                             modifier = Modifier.size(
-                                size = 16.dp
+                                size = 8.dp
                             )
                         )
                     }
+                }
+
+                items(
+                    items = expenses.reversed(),
+                    key = { expense ->
+                        expense.id
+                    }
+                ) { expense ->
+                    ExpenseCard(
+                        expense = expense,
+                        isEditing = editingExpenseId == expense.id,
+                        onEditClick = {
+                            editingExpenseId = expense.id
+                        },
+                        onCancelEdit = {
+                            editingExpenseId = null
+                        },
+                        onSaveEdit = { updatedExpense ->
+                            viewModel.updateExpense(
+                                expense = updatedExpense
+                            )
+                        },
+                        onDeleteClick = {
+                            viewModel.deleteExpense(
+                                id = expense.id
+                            )
+                        }
+                    )
                 }
             }
         }

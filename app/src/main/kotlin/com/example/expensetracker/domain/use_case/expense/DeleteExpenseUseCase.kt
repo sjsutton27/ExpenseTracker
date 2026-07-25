@@ -7,7 +7,7 @@ import com.example.expensetracker.domain.repository.ExpenseRepository
 import kotlinx.coroutines.flow.Flow
 
 class DeleteExpenseUseCase(
-    private val repository: ExpenseRepository = ExpenseRepositoryImpl()
+    private val repository: ExpenseRepository
 ){
     operator fun invoke(id: String): Flow<Resource<Unit>> {
         return repository.deleteExpense(id = id)

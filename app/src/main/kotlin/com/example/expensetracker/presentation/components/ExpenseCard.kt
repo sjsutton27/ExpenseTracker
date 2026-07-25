@@ -218,16 +218,12 @@ fun ExpenseCard(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         AsyncImage(
-                            model = expense.imageUrl.ifBlank {
+                            model = if (expense.merchantDomain.isBlank()) {
                                 Constants.DEFAULT_LOGO
+                            } else {
+                                "https://img.logo.dev/${expense.merchantDomain}?token=${Constants.API_KEY}"
                             },
-                            contentDescription = expense.merchant,
-                            modifier = Modifier
-                                .size(50.dp)
-                                .clip(
-                                    shape = RoundedCornerShape(size = 8.dp)
-                                ),
-                            contentScale = ContentScale.Crop
+                            contentDescription = expense.merchant
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Column {

@@ -26,15 +26,15 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.expensetracker.R
 import com.example.expensetracker.common.Resource
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun SignUpScreen(
     navController: NavHostController,
-    viewModel: SignUpViewModel = viewModel()
+    viewModel: SignUpViewModel = koinViewModel()
 ) {
     val context = LocalContext.current
     val loginRoute = stringResource(id = R.string.route_login)

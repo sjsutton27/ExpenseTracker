@@ -1,7 +1,11 @@
 package com.example.expensetracker.data.repository
 
+import com.example.expensetracker.common.Constants
 import com.example.expensetracker.common.Resource
 import com.example.expensetracker.data.model.ExpenseItem
+import com.example.expensetracker.data.remote.api.LogoApi
+import com.example.expensetracker.data.remote.responses.ExpenseImage
+import com.example.expensetracker.data.util.prepareExpense
 import com.example.expensetracker.domain.repository.ExpenseRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -16,8 +20,9 @@ import kotlinx.coroutines.tasks.await
 import com.google.firebase.database.DatabaseReference
 
 class ExpenseRepositoryImpl(
-    private val auth: FirebaseAuth = FirebaseAuth.getInstance(),
-    private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+    private val auth: FirebaseAuth,
+    private val database: FirebaseDatabase,
+    private val logoApi: LogoApi
 ) : ExpenseRepository {
 
     private val userId: String?
@@ -33,16 +38,18 @@ class ExpenseRepositoryImpl(
     override fun addExpense(
         expense: ExpenseItem
     ): Flow<Resource<ExpenseItem>> = flow {
-
         emit(value = Resource.Loading())
 
         try {
+            val preparedExpense = prepareExpense(this@ExpenseRepositoryImpl, expense)
             val ref = getExpenseRef() ?: throw IllegalStateException("User not logged in")
 
             val expenseId = ref.push().key
                 ?: throw Exception("Failed to generate expense id.")
 
-            val newExpense = expense.copy(id = expenseId)
+            val newExpense = preparedExpense.copy(
+                id = expenseId
+            )
 
             ref
                 .child(expenseId)
@@ -63,14 +70,15 @@ class ExpenseRepositoryImpl(
         emit(value = Resource.Loading())
 
         try {
+            val preparedExpense = prepareExpense(this@ExpenseRepositoryImpl, expense)
             val ref = getExpenseRef() ?: throw IllegalStateException("User not logged in")
 
             ref
-                .child(expense.id)
-                .setValue(expense)
+                .child(preparedExpense.id)
+                .setValue(preparedExpense)
                 .await()
 
-            emit(value = Resource.Success(data = expense))
+            emit(value = Resource.Success(data = preparedExpense))
 
         } catch (e: Exception) {
             emit(value = Resource.Error(message = e.message ?: "Failed to update expense"))
@@ -135,6 +143,19 @@ class ExpenseRepositoryImpl(
                     message = e.message ?: "Failed to delete expense"
                 )
             )
+        }
+
+
+    }
+
+    override suspend fun getMerchantLogo(
+        merchant: String
+    ): ExpenseImage? {
+        return try {
+            logoApi
+                .searchLogos(merchant)
+        } catch (e: Exception) {
+            null
         }
     }
 }

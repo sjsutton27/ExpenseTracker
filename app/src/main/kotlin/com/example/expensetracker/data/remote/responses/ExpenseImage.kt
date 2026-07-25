@@ -1,3 +1,7 @@
 package com.example.expensetracker.data.remote.responses
 
-class ExpenseImage : ArrayList<ExpenseImageItem>()
+data class ExpenseImage(
+    val domain: String,
+    val url: String,
+    val name: String
+)

@@ -3,7 +3,6 @@ package com.example.expensetracker.presentation.screens.authentication.reset_pas
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.expensetracker.common.Resource
-import com.example.expensetracker.data.repository.AuthRepositoryImpl
 import com.example.expensetracker.domain.use_case.auth.ForgotPasswordUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -11,7 +10,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 class ForgotPasswordViewModel(
-    private val forgotPasswordUseCase: ForgotPasswordUseCase = ForgotPasswordUseCase(repository = AuthRepositoryImpl())
+    private val forgotPasswordUseCase: ForgotPasswordUseCase
 ): ViewModel() {
     private val _forgotPasswordState = MutableStateFlow<Resource<String>?>(value = null)
     val forgotPasswordState: StateFlow<Resource<String>?> = _forgotPasswordState

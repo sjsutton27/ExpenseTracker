@@ -9,6 +9,7 @@ data class ExpenseItem(
     val date: Long = currentDate(),
     val category: ExpenseCategory = ExpenseCategory.OTHER,
     val merchant: String = "",
+    val merchantDomain: String = "",
     val frequency : ExpenseFrequency = ExpenseFrequency.NONE,
     val imageUrl: String = "",
 )

@@ -7,7 +7,7 @@ import com.example.expensetracker.domain.repository.ExpenseRepository
 import kotlinx.coroutines.flow.Flow
 
 class GetExpensesUseCase(
-    private val repository: ExpenseRepository = ExpenseRepositoryImpl()
+    private val repository: ExpenseRepository
 ) {
     operator fun invoke(): Flow<Resource<List<ExpenseItem>>> =
         repository.getExpenses()

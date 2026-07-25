@@ -3,7 +3,6 @@ package com.example.expensetracker.presentation.screens.authentication.login
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.expensetracker.common.Resource
-import com.example.expensetracker.data.repository.AuthRepositoryImpl
 import com.example.expensetracker.domain.use_case.auth.LoginUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -15,7 +14,7 @@ import kotlinx.coroutines.flow.onEach
  * TODO: Inactivity to log out the user
  */
 class LoginViewModel(
-    private val loginUseCase: LoginUseCase = LoginUseCase(repository = AuthRepositoryImpl())
+    private val loginUseCase: LoginUseCase
 ) : ViewModel() {
 
     private val _loginState = MutableStateFlow<Resource<String>?>(value = null)

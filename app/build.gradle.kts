@@ -87,6 +87,14 @@ dependencies {
     // coil for images
     implementation(libs.coil.compose)
 
+    // Retrofit
+    implementation(libs.retrofit.retrofit)
+    implementation(libs.retrofit.gson)
+
+    //Koin
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
+
 
     // Add the dependencies for any other desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries

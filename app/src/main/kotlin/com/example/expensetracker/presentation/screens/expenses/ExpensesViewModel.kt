@@ -10,10 +10,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class ExpensesViewModel(
-    private val expenseUseCases: ExpenseUseCases = ExpenseUseCases()
+    private val expenseUseCases: ExpenseUseCases
 ): ViewModel() {
-
-
     private val _expenses =
         MutableStateFlow<List<ExpenseItem>>(emptyList())
     val expenses =
