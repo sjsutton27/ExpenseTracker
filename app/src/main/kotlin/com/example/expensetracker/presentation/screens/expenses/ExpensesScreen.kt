@@ -63,11 +63,14 @@ fun ExpensesScreen(
         key1 = getExpensesState
     ) {
         if (getExpensesState is Resource.Error) {
-            Toast.makeText(
-                context,
-                (getExpensesState as Resource.Error).message,
-                Toast.LENGTH_SHORT
-            ).show()
+            val errorMessage = (getExpensesState as Resource.Error).message
+            if (errorMessage != "User not logged in") {
+                Toast.makeText(
+                    context,
+                    errorMessage,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
             viewModel.resetGetExpensesState()
         }
     }

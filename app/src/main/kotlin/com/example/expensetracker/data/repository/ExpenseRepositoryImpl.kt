@@ -92,7 +92,6 @@ class ExpenseRepositoryImpl(
 
             val ref = getExpenseRef()
             if (ref == null) {
-                trySend(Resource.Error("User not logged in"))
                 close()
                 return@callbackFlow
             }
@@ -109,7 +108,11 @@ class ExpenseRepositoryImpl(
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    trySend(Resource.Error(error.message))
+                    if (error.code == DatabaseError.PERMISSION_DENIED && auth.currentUser == null) {
+                        close()
+                    } else {
+                        trySend(Resource.Error(error.message))
+                    }
                 }
             }
 
