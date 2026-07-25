@@ -63,7 +63,7 @@ fun AppHeader(
                 onClick = {
                     Firebase.auth.signOut()
                     navController.navigate(loginRoute) {
-                        popUpTo(0) { inclusive = true }
+                        popUpTo(navController.graph.id) { inclusive = true }
                     }
                 }
             ) {

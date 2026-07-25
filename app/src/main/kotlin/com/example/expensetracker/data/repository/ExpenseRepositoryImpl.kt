@@ -1,0 +1,140 @@
+package com.example.expensetracker.data.repository
+
+import com.example.expensetracker.common.Resource
+import com.example.expensetracker.data.model.ExpenseItem
+import com.example.expensetracker.domain.repository.ExpenseRepository
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.tasks.await
+import com.google.firebase.database.DatabaseReference
+
+class ExpenseRepositoryImpl(
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance(),
+    private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+) : ExpenseRepository {
+
+    private val userId: String?
+        get() = auth.currentUser?.uid
+
+    private fun getExpenseRef(): DatabaseReference? {
+        val id = userId ?: return null
+        return database.reference
+            .child("Users")
+            .child(id)
+    }
+
+    override fun addExpense(
+        expense: ExpenseItem
+    ): Flow<Resource<ExpenseItem>> = flow {
+
+        emit(value = Resource.Loading())
+
+        try {
+            val ref = getExpenseRef() ?: throw IllegalStateException("User not logged in")
+
+            val expenseId = ref.push().key
+                ?: throw Exception("Failed to generate expense id.")
+
+            val newExpense = expense.copy(id = expenseId)
+
+            ref
+                .child(expenseId)
+                .setValue(newExpense)
+                .await()
+
+            emit(value = Resource.Success(data = newExpense))
+
+        } catch (e: Exception) {
+            emit(value = Resource.Error(message = e.message ?: "Failed to add expense"))
+        }
+    }
+
+    override fun updateExpense(
+        expense: ExpenseItem
+    ): Flow<Resource<ExpenseItem>> = flow {
+
+        emit(value = Resource.Loading())
+
+        try {
+            val ref = getExpenseRef() ?: throw IllegalStateException("User not logged in")
+
+            ref
+                .child(expense.id)
+                .setValue(expense)
+                .await()
+
+            emit(value = Resource.Success(data = expense))
+
+        } catch (e: Exception) {
+            emit(value = Resource.Error(message = e.message ?: "Failed to update expense"))
+        }
+    }
+
+    override fun getExpenses(): Flow<Resource<List<ExpenseItem>>> =
+        callbackFlow {
+
+            trySend(Resource.Loading())
+
+            val ref = getExpenseRef()
+            if (ref == null) {
+                trySend(Resource.Error("User not logged in"))
+                close()
+                return@callbackFlow
+            }
+
+            val listener = object : ValueEventListener {
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+
+                    val expenses = snapshot.children.mapNotNull {child ->
+                        child.getValue(ExpenseItem::class.java)
+                    }
+
+                    trySend(element = Resource.Success(data = expenses)).isSuccess
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    trySend(Resource.Error(error.message))
+                }
+            }
+
+            ref.addValueEventListener(listener)
+
+            awaitClose {
+                ref.removeEventListener(listener)
+            }
+        }
+
+    override fun deleteExpense(
+        id: String
+    ): Flow<Resource<Unit>> = flow {
+
+        emit(value = Resource.Loading())
+
+        try {
+            val ref = getExpenseRef() ?: throw IllegalStateException("User not logged in")
+
+            ref
+                .child(id)
+                .removeValue()
+                .await()
+
+            emit(Resource.Success(Unit))
+
+        } catch (e: Exception) {
+
+            emit(
+                Resource.Error(
+                    message = e.message ?: "Failed to delete expense"
+                )
+            )
+        }
+    }
+}

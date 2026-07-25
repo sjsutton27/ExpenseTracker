@@ -81,6 +81,12 @@ dependencies {
     // When using the BoM, don't specify versions in Firebase dependencies
     implementation(libs.firebase.analytics)
 
+    // Add the dependency for the Realtime Database library
+    implementation(libs.firebase.database)
+
+    // coil for images
+    implementation(libs.coil.compose)
+
 
     // Add the dependencies for any other desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries

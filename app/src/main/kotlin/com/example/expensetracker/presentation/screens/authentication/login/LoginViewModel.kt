@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.expensetracker.common.Resource
 import com.example.expensetracker.data.repository.AuthRepositoryImpl
-import com.example.expensetracker.domain.use_case.LoginUseCase
+import com.example.expensetracker.domain.use_case.auth.LoginUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
