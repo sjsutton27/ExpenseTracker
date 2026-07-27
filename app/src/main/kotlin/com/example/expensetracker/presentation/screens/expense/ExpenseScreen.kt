@@ -19,9 +19,9 @@ import com.example.expensetracker.common.Resource
 import com.example.expensetracker.data.model.expense.ExpenseItem
 import com.example.expensetracker.data.model.expense.ExpenseScreenState
 import com.example.expensetracker.presentation.components.AppHeader
-import com.example.expensetracker.presentation.components.expense.ExpenseScreenContent
-import com.example.expensetracker.presentation.screens.expense.actions.ExpenseScreenActions
-import com.example.expensetracker.presentation.screens.expense.actions.ExpenseScreenEffectActions
+import com.example.expensetracker.presentation.components.expense.ExpenseContent
+import com.example.expensetracker.presentation.screens.expense.actions.ExpenseActions
+import com.example.expensetracker.presentation.screens.expense.actions.ExpenseEffectActions
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -44,7 +44,7 @@ fun ExpensesScreen(
         getExpensesState = getExpensesState,
         expenseState = expenseState,
         deleteExpenseState = deleteExpenseState,
-        actions = ExpenseScreenEffectActions(
+        actions = ExpenseEffectActions(
             onResetGetExpensesState = viewModel::resetGetExpensesState,
             onResetExpenseState = viewModel::resetExpenseState,
             onResetDeleteExpenseState = viewModel::resetDeleteExpenseState,
@@ -64,7 +64,7 @@ fun ExpensesScreen(
             )
         }
     ) { innerPadding ->
-        ExpenseScreenContent(
+        ExpenseContent(
             modifier = Modifier.padding(paddingValues = innerPadding),
             state = ExpenseScreenState(
                 expenses = expenses,
@@ -72,7 +72,7 @@ fun ExpensesScreen(
                 addingExpense = addingExpense,
                 editingExpenseId = editingExpenseId
             ),
-            actions = ExpenseScreenActions(
+            actions = ExpenseActions(
                 onAddExpenseClick = { addingExpense = true },
                 onCancelAdd = { addingExpense = false },
                 onSaveNewExpense = { newExpense ->
@@ -104,7 +104,7 @@ private fun ExpensesScreenEffectHandler(
     getExpensesState: Resource<List<ExpenseItem>>?,
     expenseState: Resource<ExpenseItem>?,
     deleteExpenseState: Resource<Unit>?,
-    actions: ExpenseScreenEffectActions
+    actions: ExpenseEffectActions
 ) {
     val context = LocalContext.current
 

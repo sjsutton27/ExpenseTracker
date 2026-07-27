@@ -16,13 +16,13 @@ import androidx.compose.ui.unit.dp
 import com.example.expensetracker.common.Resource
 import com.example.expensetracker.data.model.expense.ExpenseScreenState
 import com.example.expensetracker.presentation.components.expense.actions.ExpenseCardActions
-import com.example.expensetracker.presentation.screens.expense.actions.ExpenseScreenActions
+import com.example.expensetracker.presentation.screens.expense.actions.ExpenseActions
 
 @Composable
-fun ExpenseScreenContent(
+fun ExpenseContent(
     modifier: Modifier = Modifier,
     state: ExpenseScreenState,
-    actions: ExpenseScreenActions
+    actions: ExpenseActions
 ) {
     Box(
         modifier = modifier

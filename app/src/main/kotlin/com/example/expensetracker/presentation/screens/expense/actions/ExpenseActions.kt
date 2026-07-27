@@ -2,7 +2,7 @@ package com.example.expensetracker.presentation.screens.expense.actions
 
 import com.example.expensetracker.data.model.expense.ExpenseItem
 
-data class ExpenseScreenActions(
+data class ExpenseActions(
     val onAddExpenseClick: () -> Unit,
     val onCancelAdd: () -> Unit,
     val onSaveNewExpense: (ExpenseItem) -> Unit,

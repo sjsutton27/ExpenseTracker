@@ -1,6 +1,6 @@
 package com.example.expensetracker.presentation.screens.expense.actions
 
-data class ExpenseScreenEffectActions(
+data class ExpenseEffectActions(
     val onResetGetExpensesState: () -> Unit,
     val onResetExpenseState: () -> Unit,
     val onResetDeleteExpenseState: () -> Unit,
