@@ -1,6 +1,5 @@
 package com.example.expensetracker.presentation.screens.authentication.login
 
-import android.R.attr.onClick
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -35,6 +34,7 @@ import com.example.expensetracker.common.Resource
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
+@Suppress("LongMethod")
 fun LoginScreen(
     navController: NavHostController,
     viewModel: LoginViewModel = koinViewModel()
@@ -69,9 +69,10 @@ fun LoginScreen(
         }
     }
 
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .padding(all = 16.dp),
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(all = 16.dp),
         contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -112,9 +113,7 @@ fun LoginScreen(
                     Text(
                         text = stringResource(
                             id = R.string.label_login
-                        ).lowercase().replaceFirstChar {
-                            char -> char.uppercase()
-                        }
+                        ).lowercase().replaceFirstChar { char -> char.uppercase() }
                     )
                 }
             }
@@ -132,9 +131,7 @@ fun LoginScreen(
                 Text(
                     text = stringResource(
                         id = R.string.label_signup
-                    ).lowercase().replaceFirstChar {
-                        char -> char.uppercase()
-                    }
+                    ).lowercase().replaceFirstChar { char -> char.uppercase() }
                 )
             }
 
@@ -145,11 +142,11 @@ fun LoginScreen(
                 textDecoration = TextDecoration.Underline,
                 modifier = Modifier
                     .clickable(
-                    onClick = {
-                        navController.navigate(route = forgotPasswordRoute)
-                        viewModel.resetState()
-                    }
-                )
+                        onClick = {
+                            navController.navigate(route = forgotPasswordRoute)
+                            viewModel.resetState()
+                        }
+                    )
             )
         }
     }

@@ -63,7 +63,7 @@ class AuthRepositoryImpl(
             emit(value = Resource.Error(errorMessage))
         }
     }
-    
+
     override fun forgotPassword(email: String): Flow<Resource<String>> = flow {
         emit(value = Resource.Loading())
         try {

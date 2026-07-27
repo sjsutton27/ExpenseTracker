@@ -2,7 +2,21 @@
 package com.example.expensetracker.data.model
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.AttachMoney
+import androidx.compose.material.icons.filled.DirectionsCar
+import androidx.compose.material.icons.filled.Face
+import androidx.compose.material.icons.filled.FitnessCenter
+import androidx.compose.material.icons.filled.Flight
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.LocalGasStation
+import androidx.compose.material.icons.filled.LocalHospital
+import androidx.compose.material.icons.filled.Movie
+import androidx.compose.material.icons.filled.Receipt
+import androidx.compose.material.icons.filled.Restaurant
+import androidx.compose.material.icons.filled.Security
+import androidx.compose.material.icons.filled.ShoppingBag
+import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.filled.Subscriptions
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 

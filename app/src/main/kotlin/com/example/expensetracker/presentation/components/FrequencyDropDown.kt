@@ -17,7 +17,6 @@ fun FrequencyDropdown(
     selectedFrequency: ExpenseFrequency,
     onFrequencySelected: (ExpenseFrequency) -> Unit
 ) {
-
     var expanded by remember {
         mutableStateOf(value = false)
     }

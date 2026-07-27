@@ -1,6 +1,5 @@
 package com.example.expensetracker.data.repository
 
-import com.example.expensetracker.common.Constants
 import com.example.expensetracker.common.Resource
 import com.example.expensetracker.data.model.ExpenseItem
 import com.example.expensetracker.data.remote.api.LogoApi
@@ -10,6 +9,7 @@ import com.example.expensetracker.domain.repository.ExpenseRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.channels.awaitClose
@@ -17,7 +17,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
-import com.google.firebase.database.DatabaseReference
 
 class ExpenseRepositoryImpl(
     private val auth: FirebaseAuth,
@@ -44,7 +43,7 @@ class ExpenseRepositoryImpl(
             val ref = getExpenseRef()
                 ?: error("User not logged in")
             val expenseId = ref.push().key
-                ?: throw Exception("Failed to generate expense id.")
+                ?: error("Failed to generate expense id.")
             val newExpense = preparedExpense.copy(
                 id = expenseId
             )
@@ -86,7 +85,7 @@ class ExpenseRepositoryImpl(
             }
             val listener = object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    val expenses = snapshot.children.mapNotNull {child ->
+                    val expenses = snapshot.children.mapNotNull { child ->
                         child.getValue(ExpenseItem::class.java)
                     }
                     trySend(element = Resource.Success(data = expenses)).isSuccess
@@ -124,10 +123,9 @@ class ExpenseRepositoryImpl(
                 )
             )
         }
-
-
     }
 
+    @Suppress("SwallowedException")
     override suspend fun getMerchantLogo(
         merchant: String
     ): ExpenseImage? {

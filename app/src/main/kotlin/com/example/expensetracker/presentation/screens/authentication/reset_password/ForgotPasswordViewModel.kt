@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.onEach
 
 class ForgotPasswordViewModel(
     private val forgotPasswordUseCase: ForgotPasswordUseCase
-): ViewModel() {
+) : ViewModel() {
     private val _forgotPasswordState = MutableStateFlow<Resource<String>?>(value = null)
     val forgotPasswordState: StateFlow<Resource<String>?> = _forgotPasswordState
 

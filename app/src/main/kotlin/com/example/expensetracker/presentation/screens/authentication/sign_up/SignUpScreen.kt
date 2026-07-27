@@ -32,6 +32,7 @@ import com.example.expensetracker.common.Resource
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
+@Suppress("LongMethod")
 fun SignUpScreen(
     navController: NavHostController,
     viewModel: SignUpViewModel = koinViewModel()
@@ -65,9 +66,10 @@ fun SignUpScreen(
         }
     }
 
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .padding(all = 16.dp),
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(all = 16.dp),
         contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -117,9 +119,7 @@ fun SignUpScreen(
                     Text(
                         text = stringResource(
                             id = R.string.label_signup
-                        ).lowercase().replaceFirstChar {
-                            char -> char.uppercase()
-                        }
+                        ).lowercase().replaceFirstChar { char -> char.uppercase() }
                     )
                 }
             }
@@ -137,9 +137,7 @@ fun SignUpScreen(
                 Text(
                     text = stringResource(
                         id = R.string.label_login
-                    ).lowercase().replaceFirstChar {
-                        char -> char.uppercase()
-                    }
+                    ).lowercase().replaceFirstChar { char -> char.uppercase() }
                 )
             }
         }

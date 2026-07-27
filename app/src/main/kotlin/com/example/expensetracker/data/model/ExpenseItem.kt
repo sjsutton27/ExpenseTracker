@@ -10,6 +10,6 @@ data class ExpenseItem(
     val category: ExpenseCategory = ExpenseCategory.OTHER,
     val merchant: String = "",
     val merchantDomain: String = "",
-    val frequency : ExpenseFrequency = ExpenseFrequency.NONE,
+    val frequency: ExpenseFrequency = ExpenseFrequency.NONE,
     val imageUrl: String = "",
 )

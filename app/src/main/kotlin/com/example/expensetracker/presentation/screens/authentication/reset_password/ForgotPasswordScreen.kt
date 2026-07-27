@@ -41,9 +41,11 @@ fun ForgotPasswordScreen(
     LaunchedEffect(key1 = forgotPasswordState) {
         when (forgotPasswordState) {
             is Resource.Success -> {
-                Toast.makeText(/* context = */ context, /* text = */
-                    (forgotPasswordState as Resource.Success).data, /* duration = */
-                    Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    /* context = */ context,
+                    /* text = */ (forgotPasswordState as Resource.Success).data,
+                    /* duration = */ Toast.LENGTH_SHORT
+                ).show()
                 viewModel.resetState()
                 navController.navigate(route = loginRoute) {
                     popUpTo(route = loginRoute) {
@@ -52,20 +54,23 @@ fun ForgotPasswordScreen(
                 }
             }
             is Resource.Error -> {
-                Toast.makeText(/* context = */ context, /* text = */
-                    (forgotPasswordState as Resource.Error).message, /* duration = */
-                    Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    /* context = */ context,
+                    /* text = */ (forgotPasswordState as Resource.Error).message,
+                    /* duration = */ Toast.LENGTH_SHORT
+                ).show()
                 viewModel.resetState()
             }
             else -> {}
         }
     }
 
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .padding(all = 16.dp),
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(all = 16.dp),
         contentAlignment = Alignment.Center
-    ){
+    ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
@@ -95,7 +100,7 @@ fun ForgotPasswordScreen(
                         }
                     }
                 },
-            ){
+            ) {
                 Text(text = "Send Reset Email")
             }
             Spacer(modifier = Modifier.padding(all = 8.dp))
@@ -107,7 +112,7 @@ fun ForgotPasswordScreen(
                         }
                     }
                 },
-            ){
+            ) {
                 Text(text = "Cancel")
             }
         }

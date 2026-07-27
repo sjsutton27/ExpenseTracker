@@ -20,7 +20,7 @@ import com.example.expensetracker.data.model.BottomNavItem
 @Composable
 fun BottomNavBar(
     navController: NavHostController
-){
+) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
@@ -29,15 +29,18 @@ fun BottomNavBar(
             route = stringResource(id = R.string.route_dashboard),
             title = stringResource(id = R.string.label_dashboard),
             icon = Icons.Default.AccountBalance
-        ), BottomNavItem(
+        ),
+        BottomNavItem(
             route = stringResource(id = R.string.route_expenses),
             title = stringResource(id = R.string.label_expenses),
             icon = Icons.Default.Receipt
-        ), BottomNavItem(
+        ),
+        BottomNavItem(
             route = stringResource(id = R.string.route_income),
             title = stringResource(id = R.string.label_income),
             icon = Icons.Default.AccountBalanceWallet
-        ),BottomNavItem(
+        ),
+        BottomNavItem(
             route = stringResource(id = R.string.route_profile),
             title = stringResource(id = R.string.label_profile),
             icon = Icons.Default.Person

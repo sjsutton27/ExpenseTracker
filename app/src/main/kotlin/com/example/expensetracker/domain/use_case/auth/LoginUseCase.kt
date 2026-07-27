@@ -10,7 +10,7 @@ class LoginUseCase(private val repository: AuthRepository) {
     operator fun invoke(email: String, password: String): Flow<Resource<String>> {
         val errorMessage = when {
             email.isBlank() || password.isBlank() -> "Email and password cannot be empty"
-            ! ValidEmail.isValid(email) -> "Invalid email format"
+            !ValidEmail.isValid(email) -> "Invalid email format"
             else -> null
         }
 

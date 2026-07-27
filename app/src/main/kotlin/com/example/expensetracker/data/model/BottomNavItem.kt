@@ -1,4 +1,5 @@
 package com.example.expensetracker.data.model
+
 import androidx.compose.ui.graphics.vector.ImageVector
 
 data class BottomNavItem(

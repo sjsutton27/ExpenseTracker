@@ -25,7 +25,6 @@ fun DashboardScreen(
             )
         }
     ) { innerPadding ->
-
         Column(
             modifier = Modifier
                 .fillMaxSize()

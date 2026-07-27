@@ -46,3 +46,17 @@ exceptions:
       - NullPointerException
       - IndexOutOfBoundsException
       # Removed Exception to allow catching it in repositories if rethrown/handled
+
+formatting:
+  active: true
+  android: true
+  ArgumentListWrapping:
+    active: true
+  ParameterListWrapping:
+    active: true
+  PackageName:
+    active: false # Using naming -> PackageNaming instead to allow underscores
+  NoUnusedImports:
+    active: true
+  FinalNewline:
+    active: true

@@ -1,10 +1,9 @@
 package com.example.expensetracker.common
 
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Date
 import java.util.Locale
-
-import java.util.Calendar
 
 fun formatDate(timestamp: Long): String {
     val formatter = SimpleDateFormat(
@@ -21,6 +20,5 @@ fun currentDate(): Long {
         set(Calendar.MINUTE, 0)
         set(Calendar.SECOND, 0)
         set(Calendar.MILLISECOND, 0)
-
     }.timeInMillis
 }

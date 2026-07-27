@@ -10,15 +10,16 @@ class SignUpUseCase(private val repository: AuthRepository) {
     operator fun invoke(email: String, password: String, confirmPassword: String): Flow<Resource<String>> {
         val errorMessage = when {
             email.isBlank() || password.isBlank() || confirmPassword.isBlank() -> "Fields cannot be empty"
-            ! ValidEmail.isValid(email) -> "Invalid email format"
+            !ValidEmail.isValid(email) -> "Invalid email format"
             password != confirmPassword -> "Passwords do not match"
-            !validatePassword(password) -> "Password must contain at least one uppercase letter, one number, and one special character"
+            !validatePassword(password) ->
+                "Password must contain at least one uppercase letter, one number, and one special character"
             else -> null
         }
 
         if (errorMessage != null) {
             return flow {
-                emit(value = Resource.Error(errorMessage))
+                emit(value = Resource.Error(message = errorMessage))
             }
         }
 

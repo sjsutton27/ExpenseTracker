@@ -12,7 +12,7 @@ class ForgotPasswordUseCase(
     operator fun invoke(email: String): Flow<Resource<String>> {
         val errorMessage = when {
             email.isBlank() -> "Email cannot be empty"
-            ! ValidEmail.isValid(email) -> "Invalid email format"
+            !ValidEmail.isValid(email) -> "Invalid email format"
             else -> null
         }
 

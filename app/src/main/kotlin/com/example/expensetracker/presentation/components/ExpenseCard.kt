@@ -1,6 +1,5 @@
 package com.example.expensetracker.presentation.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
@@ -33,8 +31,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.expensetracker.common.Constants
@@ -42,7 +38,7 @@ import com.example.expensetracker.common.formatDate
 import com.example.expensetracker.data.model.ExpenseItem
 
 @Composable
-@Suppress("LongParameterList")
+@Suppress("LongParameterList", "LongMethod")
 fun ExpenseCard(
     expense: ExpenseItem,
     isEditing: Boolean,
@@ -86,13 +82,13 @@ fun ExpenseCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(all = 8.dp),
         colors = CardDefaults.cardColors(
             containerColor = backgroundColor
         )
     ) {
         Column(
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(all = 16.dp)
         ) {
             if (isEditing) {
                 OutlinedTextField(
@@ -156,7 +152,7 @@ fun ExpenseCard(
                                     showDatePicker = false
                                 }
                             ) {
-                                Text("OK")
+                                Text(text = "OK")
                             }
                         }
                     ) {
@@ -165,21 +161,21 @@ fun ExpenseCard(
                         )
                     }
                 }
-                Spacer(modifier = Modifier.size(8.dp))
+                Spacer(modifier = Modifier.size(size = 8.dp))
                 CategoryDropdown(
                     selectedCategory = category,
                     onCategorySelected = { categorySelected ->
                         category = categorySelected
                     }
                 )
-                Spacer(modifier = Modifier.size(8.dp))
+                Spacer(modifier = Modifier.size(size = 8.dp))
                 FrequencyDropdown(
                     selectedFrequency = frequency,
                     onFrequencySelected = { frequencySelected ->
                         frequency = frequencySelected
                     }
                 )
-                Spacer(modifier = Modifier.size(12.dp))
+                Spacer(modifier = Modifier.size(size = 12.dp))
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.End
@@ -189,7 +185,7 @@ fun ExpenseCard(
                     ) {
                         Text(text = "Cancel")
                     }
-                    Spacer(modifier = Modifier.width(8.dp))
+                    Spacer(modifier = Modifier.width(width = 8.dp))
                     Button(
                         onClick = {
                             onSaveEdit(
@@ -240,7 +236,6 @@ fun ExpenseCard(
                         IconButton(
                             onClick = onEditClick
                         ) {
-
                             Icon(
                                 imageVector = Icons.Default.Edit,
                                 contentDescription = "Edit Expense"
@@ -259,8 +254,8 @@ fun ExpenseCard(
                 Spacer(modifier = Modifier.size(8.dp))
                 Text(
                     text = "Merchant: ${
-                        expense.merchant.lowercase().replaceFirstChar {
-                            firstChar -> firstChar.uppercase() 
+                        expense.merchant.lowercase().replaceFirstChar { firstChar ->
+                            firstChar.uppercase()
                         }
                     }"
                 )

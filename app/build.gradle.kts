@@ -67,6 +67,8 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
 
+    detektPlugins(libs.detekt.formatting)
+
     // Add below dependencies
     // For Room
     implementation(libs.androidx.room.runtime)

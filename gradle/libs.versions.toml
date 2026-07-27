@@ -60,6 +60,7 @@ koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", versi
 kotlinx-coroutines-play-services = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version.ref = "kotlinxCoroutinesPlayServices" }
 retrofit-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

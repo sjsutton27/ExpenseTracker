@@ -3,7 +3,11 @@ package com.example.expensetracker.di
 import com.example.expensetracker.domain.use_case.auth.ForgotPasswordUseCase
 import com.example.expensetracker.domain.use_case.auth.LoginUseCase
 import com.example.expensetracker.domain.use_case.auth.SignUpUseCase
-import com.example.expensetracker.domain.use_case.expense.*
+import com.example.expensetracker.domain.use_case.expense.AddExpenseUseCase
+import com.example.expensetracker.domain.use_case.expense.DeleteExpenseUseCase
+import com.example.expensetracker.domain.use_case.expense.ExpenseUseCases
+import com.example.expensetracker.domain.use_case.expense.GetExpensesUseCase
+import com.example.expensetracker.domain.use_case.expense.UpdateExpenseUseCase
 import org.koin.dsl.module
 
 val useCaseModule = module {

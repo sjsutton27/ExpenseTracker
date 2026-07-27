@@ -29,7 +29,7 @@ import com.google.firebase.auth.auth
 fun AppHeader(
     title: String,
     showBackButton: Boolean,
-    navController : NavController,
+    navController: NavController,
     modifier: Modifier = Modifier
 ) {
     val loginRoute = stringResource(id = R.string.route_login)

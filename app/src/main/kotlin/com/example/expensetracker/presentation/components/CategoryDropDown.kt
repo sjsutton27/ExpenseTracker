@@ -24,11 +24,9 @@ fun CategoryDropdown(
     selectedCategory: ExpenseCategory,
     onCategorySelected: (ExpenseCategory) -> Unit
 ) {
-
     var expanded by remember {
         mutableStateOf(false)
     }
-
 
     Box {
         OutlinedButton(
@@ -50,7 +48,6 @@ fun CategoryDropdown(
             )
         }
 
-
         DropdownMenu(
             expanded = expanded,
             onDismissRequest = {
@@ -63,7 +60,6 @@ fun CategoryDropdown(
                         Row(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-
                             Icon(
                                 imageVector = category.icon,
                                 contentDescription = category.displayName,
@@ -79,7 +75,6 @@ fun CategoryDropdown(
                             )
                         }
                     },
-
                     onClick = {
                         onCategorySelected(category)
                         expanded = false
