@@ -42,6 +42,7 @@ import com.example.expensetracker.common.formatDate
 import com.example.expensetracker.data.model.ExpenseItem
 
 @Composable
+@Suppress("LongParameterList")
 fun ExpenseCard(
     expense: ExpenseItem,
     isEditing: Boolean,
@@ -108,7 +109,7 @@ fun ExpenseCard(
                 OutlinedTextField(
                     value = amount,
                     onValueChange = { input ->
-                        if (input.matches(Regex("^\\d*\\.?\\d{0,2}$"))) {
+                        if (input.matches(Regex(pattern = "^\\d*\\.?\\d{0,2}$"))) {
                             amount = input
                         }
                     },

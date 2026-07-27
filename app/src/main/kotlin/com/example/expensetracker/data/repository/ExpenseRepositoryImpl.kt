@@ -39,25 +39,20 @@ class ExpenseRepositoryImpl(
         expense: ExpenseItem
     ): Flow<Resource<ExpenseItem>> = flow {
         emit(value = Resource.Loading())
-
         try {
             val preparedExpense = prepareExpense(this@ExpenseRepositoryImpl, expense)
-            val ref = getExpenseRef() ?: throw IllegalStateException("User not logged in")
-
+            val ref = getExpenseRef()
+                ?: error("User not logged in")
             val expenseId = ref.push().key
                 ?: throw Exception("Failed to generate expense id.")
-
             val newExpense = preparedExpense.copy(
                 id = expenseId
             )
-
             ref
                 .child(expenseId)
                 .setValue(newExpense)
                 .await()
-
             emit(value = Resource.Success(data = newExpense))
-
         } catch (e: Exception) {
             emit(value = Resource.Error(message = e.message ?: "Failed to add expense"))
         }
@@ -66,20 +61,16 @@ class ExpenseRepositoryImpl(
     override fun updateExpense(
         expense: ExpenseItem
     ): Flow<Resource<ExpenseItem>> = flow {
-
         emit(value = Resource.Loading())
-
         try {
             val preparedExpense = prepareExpense(this@ExpenseRepositoryImpl, expense)
-            val ref = getExpenseRef() ?: throw IllegalStateException("User not logged in")
-
+            val ref = getExpenseRef()
+                ?: error("User not logged in")
             ref
                 .child(preparedExpense.id)
                 .setValue(preparedExpense)
                 .await()
-
             emit(value = Resource.Success(data = preparedExpense))
-
         } catch (e: Exception) {
             emit(value = Resource.Error(message = e.message ?: "Failed to update expense"))
         }
@@ -87,26 +78,19 @@ class ExpenseRepositoryImpl(
 
     override fun getExpenses(): Flow<Resource<List<ExpenseItem>>> =
         callbackFlow {
-
             trySend(Resource.Loading())
-
             val ref = getExpenseRef()
             if (ref == null) {
                 close()
                 return@callbackFlow
             }
-
             val listener = object : ValueEventListener {
-
                 override fun onDataChange(snapshot: DataSnapshot) {
-
                     val expenses = snapshot.children.mapNotNull {child ->
                         child.getValue(ExpenseItem::class.java)
                     }
-
                     trySend(element = Resource.Success(data = expenses)).isSuccess
                 }
-
                 override fun onCancelled(error: DatabaseError) {
                     if (error.code == DatabaseError.PERMISSION_DENIED && auth.currentUser == null) {
                         close()
@@ -115,9 +99,7 @@ class ExpenseRepositoryImpl(
                     }
                 }
             }
-
             ref.addValueEventListener(listener)
-
             awaitClose {
                 ref.removeEventListener(listener)
             }
@@ -126,21 +108,16 @@ class ExpenseRepositoryImpl(
     override fun deleteExpense(
         id: String
     ): Flow<Resource<Unit>> = flow {
-
         emit(value = Resource.Loading())
-
         try {
-            val ref = getExpenseRef() ?: throw IllegalStateException("User not logged in")
-
+            val ref = getExpenseRef()
+                ?: error("User not logged in")
             ref
                 .child(id)
                 .removeValue()
                 .await()
-
-            emit(Resource.Success(Unit))
-
+            emit(value = Resource.Success(Unit))
         } catch (e: Exception) {
-
             emit(
                 Resource.Error(
                     message = e.message ?: "Failed to delete expense"

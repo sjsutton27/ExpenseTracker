@@ -114,7 +114,13 @@ fun SignUpScreen(
                         modifier = Modifier.size(24.dp)
                     )
                 } else {
-                    Text(text = stringResource(id = R.string.label_signup).lowercase().replaceFirstChar { char -> char.uppercase() })
+                    Text(
+                        text = stringResource(
+                            id = R.string.label_signup
+                        ).lowercase().replaceFirstChar {
+                            char -> char.uppercase()
+                        }
+                    )
                 }
             }
             Spacer(modifier = Modifier.padding(all = 16.dp))
@@ -128,7 +134,13 @@ fun SignUpScreen(
                     }
                 }
             ) {
-                Text(text = stringResource(id = R.string.label_login).lowercase().replaceFirstChar { char -> char.uppercase() })
+                Text(
+                    text = stringResource(
+                        id = R.string.label_login
+                    ).lowercase().replaceFirstChar {
+                        char -> char.uppercase()
+                    }
+                )
             }
         }
     }

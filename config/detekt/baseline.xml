@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>EmptyClassBlock:DashboardViewModel.kt$DashboardViewModel${ }</ID>
+    <ID>EmptyClassBlock:ProfileViewModel.kt$ProfileViewModel${ }</ID>
+    <ID>LongMethod:ExpenseCard.kt$@Composable @Suppress("LongParameterList") fun ExpenseCard( expense: ExpenseItem, isEditing: Boolean, onEditClick: () -&gt; Unit, onCancelEdit: () -&gt; Unit, onSaveEdit: (ExpenseItem) -&gt; Unit, onDeleteClick: () -&gt; Unit, isNewExpense: Boolean = false )</ID>
+    <ID>LongMethod:ExpensesScreen.kt$@Composable fun ExpensesScreen( navController: NavController, viewModel: ExpensesViewModel = koinViewModel() )</ID>
+    <ID>LongMethod:LoginScreen.kt$@Composable fun LoginScreen( navController: NavHostController, viewModel: LoginViewModel = koinViewModel() )</ID>
+    <ID>LongMethod:SignUpScreen.kt$@Composable fun SignUpScreen( navController: NavHostController, viewModel: SignUpViewModel = koinViewModel() )</ID>
+    <ID>MaxLineLength:SignUpUseCase.kt$SignUpUseCase$!validatePassword(password) -&gt; "Password must contain at least one uppercase letter, one number, and one special character"</ID>
+    <ID>NewLineAtEndOfFile:AddExpenseUseCase.kt$com.example.expensetracker.domain.use_case.expense.AddExpenseUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:AppHeader.kt$com.example.expensetracker.presentation.components.AppHeader.kt</ID>
+    <ID>NewLineAtEndOfFile:BottomNavBar.kt$com.example.expensetracker.presentation.components.BottomNavBar.kt</ID>
+    <ID>NewLineAtEndOfFile:BottomNavItem.kt$com.example.expensetracker.data.model.BottomNavItem.kt</ID>
+    <ID>NewLineAtEndOfFile:CategoryDropDown.kt$com.example.expensetracker.presentation.components.CategoryDropDown.kt</ID>
+    <ID>NewLineAtEndOfFile:Color.kt$com.example.expensetracker.ui.theme.Color.kt</ID>
+    <ID>NewLineAtEndOfFile:Constants.kt$com.example.expensetracker.common.Constants.kt</ID>
+    <ID>NewLineAtEndOfFile:DashboardPreview.kt$com.example.expensetracker.presentation.screens.dashboard.DashboardPreview.kt</ID>
+    <ID>NewLineAtEndOfFile:DashboardScreen.kt$com.example.expensetracker.presentation.screens.dashboard.DashboardScreen.kt</ID>
+    <ID>NewLineAtEndOfFile:DashboardViewModel.kt$com.example.expensetracker.presentation.screens.dashboard.DashboardViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:DateUtils.kt$com.example.expensetracker.common.DateUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:DeleteExpenseUseCase.kt$com.example.expensetracker.domain.use_case.expense.DeleteExpenseUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleUnitTest.kt$com.example.expensetracker.ExampleUnitTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExpenseCard.kt$com.example.expensetracker.presentation.components.ExpenseCard.kt</ID>
+    <ID>NewLineAtEndOfFile:ExpenseCategory.kt$com.example.expensetracker.data.model.ExpenseCategory.kt</ID>
+    <ID>NewLineAtEndOfFile:ExpenseImage.kt$com.example.expensetracker.data.remote.responses.ExpenseImage.kt</ID>
+    <ID>NewLineAtEndOfFile:ExpenseItem.kt$com.example.expensetracker.data.model.ExpenseItem.kt</ID>
+    <ID>NewLineAtEndOfFile:ExpenseNavGraph.kt$com.example.expensetracker.navigation.ExpenseNavGraph.kt</ID>
+    <ID>NewLineAtEndOfFile:ExpenseRepository.kt$com.example.expensetracker.domain.repository.ExpenseRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:ExpenseRepositoryImpl.kt$com.example.expensetracker.data.repository.ExpenseRepositoryImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:ExpenseTrackerApplication.kt$com.example.expensetracker.ExpenseTrackerApplication.kt</ID>
+    <ID>NewLineAtEndOfFile:ExpenseUseCases.kt$com.example.expensetracker.domain.use_case.expense.ExpenseUseCases.kt</ID>
+    <ID>NewLineAtEndOfFile:ExpensesPreview.kt$com.example.expensetracker.presentation.screens.expenses.ExpensesPreview.kt</ID>
+    <ID>NewLineAtEndOfFile:ExpensesViewModel.kt$com.example.expensetracker.presentation.screens.expenses.ExpensesViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:FirebaseModule.kt$com.example.expensetracker.di.FirebaseModule.kt</ID>
+    <ID>NewLineAtEndOfFile:ForgotPasswordScreen.kt$com.example.expensetracker.presentation.screens.authentication.reset_password.ForgotPasswordScreen.kt</ID>
+    <ID>NewLineAtEndOfFile:ForgotPasswordUseCase.kt$com.example.expensetracker.domain.use_case.auth.ForgotPasswordUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:ForgotPasswordViewModel.kt$com.example.expensetracker.presentation.screens.authentication.reset_password.ForgotPasswordViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:FrequencyDropDown.kt$com.example.expensetracker.presentation.components.FrequencyDropDown.kt</ID>
+    <ID>NewLineAtEndOfFile:IncomePreview.kt$com.example.expensetracker.presentation.screens.income.IncomePreview.kt</ID>
+    <ID>NewLineAtEndOfFile:IncomeScreen.kt$com.example.expensetracker.presentation.screens.income.IncomeScreen.kt</ID>
+    <ID>NewLineAtEndOfFile:IncomeViewModel.kt$com.example.expensetracker.presentation.screens.income.IncomeViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:LoginUseCase.kt$com.example.expensetracker.domain.use_case.auth.LoginUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:LoginViewModel.kt$com.example.expensetracker.presentation.screens.authentication.login.LoginViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:MainActivity.kt$com.example.expensetracker.MainActivity.kt</ID>
+    <ID>NewLineAtEndOfFile:NetworkModule.kt$com.example.expensetracker.di.NetworkModule.kt</ID>
+    <ID>NewLineAtEndOfFile:ProfilePreview.kt$com.example.expensetracker.presentation.screens.profile.ProfilePreview.kt</ID>
+    <ID>NewLineAtEndOfFile:ProfileScreen.kt$com.example.expensetracker.presentation.screens.profile.ProfileScreen.kt</ID>
+    <ID>NewLineAtEndOfFile:ProfileViewModel.kt$com.example.expensetracker.presentation.screens.profile.ProfileViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:RepositoryModule.kt$com.example.expensetracker.di.RepositoryModule.kt</ID>
+    <ID>NewLineAtEndOfFile:SignUpUseCase.kt$com.example.expensetracker.domain.use_case.auth.SignUpUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:SignUpViewModel.kt$com.example.expensetracker.presentation.screens.authentication.sign_up.SignUpViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:Theme.kt$com.example.expensetracker.ui.theme.Theme.kt</ID>
+    <ID>NewLineAtEndOfFile:TimeFrameTab.kt$com.example.expensetracker.presentation.components.TimeFrameTab.kt</ID>
+    <ID>NewLineAtEndOfFile:Type.kt$com.example.expensetracker.ui.theme.Type.kt</ID>
+    <ID>NewLineAtEndOfFile:UpdateExpenseUseCase.kt$com.example.expensetracker.domain.use_case.expense.UpdateExpenseUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:UseCaseModule.kt$com.example.expensetracker.di.UseCaseModule.kt</ID>
+    <ID>NewLineAtEndOfFile:ValidEmail.kt$com.example.expensetracker.domain.util.ValidEmail.kt</ID>
+    <ID>SwallowedException:ExpenseRepositoryImpl.kt$ExpenseRepositoryImpl$e: Exception</ID>
+    <ID>TooGenericExceptionThrown:ExpenseRepositoryImpl.kt$ExpenseRepositoryImpl$throw Exception("Failed to generate expense id.")</ID>
+  </CurrentIssues>
+</SmellBaseline>

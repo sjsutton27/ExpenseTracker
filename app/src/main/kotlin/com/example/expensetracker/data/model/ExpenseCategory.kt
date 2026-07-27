@@ -1,3 +1,4 @@
+@file:Suppress("MagicNumber")
 package com.example.expensetracker.data.model
 
 import androidx.compose.material.icons.Icons

@@ -3,6 +3,15 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.google.ksp)
     id("com.google.gms.google-services")
+    alias(libs.plugins.ktlint)
+    alias(libs.plugins.detekt)
+}
+
+detekt {
+    buildUponDefaultConfig = true
+    allRules = false
+    config.setFrom(files("$rootDir/config/detekt/detekt.yml"))
+    baseline = file("$rootDir/config/detekt/baseline.xml")
 }
 
 android {
@@ -58,16 +67,16 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
 
-    // add bellow dependencies
-    //For Room 
+    // Add below dependencies
+    // For Room
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler) // Changed from kapt to ksp
 
-    //For UI
+    // For UI
     implementation(libs.androidx.recyclerview)
     implementation(libs.google.material)
-    //Icons
+    // Icons
     implementation(libs.androidx.compose.material.icons.extended)
 
     implementation(libs.androidx.navigation.compose)
@@ -76,8 +85,6 @@ dependencies {
     // Import the Firebase BoM
     implementation(platform(libs.firebase.bom))
 
-
-    // TODO: Add the dependencies for Firebase products you want to use
     // When using the BoM, don't specify versions in Firebase dependencies
     implementation(libs.firebase.analytics)
 
@@ -91,10 +98,9 @@ dependencies {
     implementation(libs.retrofit.retrofit)
     implementation(libs.retrofit.gson)
 
-    //Koin
+    // Koin
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
-
 
     // Add the dependencies for any other desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries

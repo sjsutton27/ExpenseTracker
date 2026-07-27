@@ -69,7 +69,12 @@ fun ForgotPasswordScreen(
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Text(text = stringResource(id = R.string.label_forgot_password), style = MaterialTheme.typography.headlineMedium)
+            Text(
+                text = stringResource(
+                    id = R.string.label_forgot_password
+                ),
+                style = MaterialTheme.typography.headlineMedium
+            )
             Spacer(modifier = Modifier.padding(all = 16.dp))
             OutlinedTextField(
                 value = email,

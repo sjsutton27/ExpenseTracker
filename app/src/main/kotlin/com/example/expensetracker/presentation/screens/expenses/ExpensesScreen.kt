@@ -31,13 +31,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.expensetracker.R
 import com.example.expensetracker.common.Resource
 import com.example.expensetracker.data.model.ExpenseItem
 import com.example.expensetracker.presentation.components.AppHeader
 import com.example.expensetracker.presentation.components.ExpenseCard
+import com.example.expensetracker.presentation.components.ExpenseSection
 import com.example.expensetracker.ui.theme.MediumGreen
 import org.koin.androidx.compose.koinViewModel
 
@@ -46,7 +46,6 @@ fun ExpensesScreen(
     navController: NavController,
     viewModel: ExpensesViewModel = koinViewModel()
 ) {
-    val context = LocalContext.current
     val expenses by viewModel.expenses.collectAsState()
     val getExpensesState by viewModel.getExpensesState.collectAsState()
     val expenseState by viewModel.expenseState.collectAsState()
@@ -58,73 +57,17 @@ fun ExpensesScreen(
         mutableStateOf(false)
     }
 
-    // Get expenses result
-    LaunchedEffect(
-        key1 = getExpensesState
-    ) {
-        if (getExpensesState is Resource.Error) {
-            val errorMessage = (getExpensesState as Resource.Error).message
-            if (errorMessage != "User not logged in") {
-                Toast.makeText(
-                    context,
-                    errorMessage,
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-            viewModel.resetGetExpensesState()
-        }
-    }
+    ExpensesScreenEffectHandler(
+        getExpensesState = getExpensesState,
+        expenseState = expenseState,
+        deleteExpenseState = deleteExpenseState,
+        onResetGetExpensesState = viewModel::resetGetExpensesState,
+        onResetExpenseState = viewModel::resetExpenseState,
+        onResetDeleteExpenseState = viewModel::resetDeleteExpenseState,
+        onEditComplete = { editingExpenseId = null },
+        onAddComplete = { addingExpense = false }
+    )
 
-    // Add and Update expense result
-    LaunchedEffect(
-        key1 = expenseState
-    ) {
-        when (expenseState) {
-            is Resource.Success -> {
-                Toast.makeText(
-                    context,
-                    "Expense saved successfully",
-                    Toast.LENGTH_SHORT
-                ).show()
-                editingExpenseId = null
-                addingExpense = false
-                viewModel.resetExpenseState()
-            }
-            is Resource.Error -> {
-                Toast.makeText(
-                    context,
-                    (expenseState as Resource.Error).message,
-                    Toast.LENGTH_SHORT
-                ).show()
-                viewModel.resetExpenseState()
-            }
-            else -> {}
-        }
-    }
-    // Delete expense result
-    LaunchedEffect(
-        key1 = deleteExpenseState
-    ) {
-        when (deleteExpenseState) {
-            is Resource.Success -> {
-                Toast.makeText(
-                    context,
-                    "Expense deleted successfully",
-                    Toast.LENGTH_SHORT
-                ).show()
-                viewModel.resetDeleteExpenseState()
-            }
-            is Resource.Error -> {
-                Toast.makeText(
-                    context,
-                    (deleteExpenseState as Resource.Error).message,
-                    Toast.LENGTH_SHORT
-                ).show()
-                viewModel.resetDeleteExpenseState()
-            }
-            else -> {}
-        }
-    }
     Scaffold(
         topBar = {
             AppHeader(
@@ -160,49 +103,14 @@ fun ExpensesScreen(
                 // Add Expense Card at the top
                 if (getExpensesState !is Resource.Loading) {
                     item {
-                        if (addingExpense) {
-                            ExpenseCard(
-                                expense = ExpenseItem(),
-                                isEditing = true,
-                                isNewExpense = true,
-                                onEditClick = {},
-                                onCancelEdit = {
-                                    addingExpense = false
-                                },
-                                onSaveEdit = { newExpense ->
-                                    viewModel.addExpense(
-                                        expense = newExpense
-                                    )
-                                },
-                                onDeleteClick = {}
-                            )
-                        } else {
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(vertical = 8.dp),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                IconButton(
-                                    onClick = {
-                                        addingExpense = true
-                                    },
-                                    modifier = Modifier
-                                        .size(64.dp)
-                                        .clip(CircleShape)
-                                        .background(MediumGreen)
-                                ) {
-                                    Icon(
-                                        imageVector = Icons.Default.Add,
-                                        contentDescription = "Add Expense",
-                                        tint = Color.White,
-                                        modifier = Modifier
-                                            .padding(8.dp)
-                                            .size(32.dp)
-                                    )
-                                }
+                        ExpenseSection(
+                            addingExpense = addingExpense,
+                            onAddExpenseClick = { addingExpense = true },
+                            onCancelEdit = { addingExpense = false },
+                            onSaveEdit = { newExpense ->
+                                viewModel.addExpense(expense = newExpense)
                             }
-                        }
+                        )
                         Spacer(
                             modifier = Modifier.size(
                                 size = 8.dp
@@ -242,3 +150,82 @@ fun ExpensesScreen(
         }
     }
 }
+
+@Composable
+@Suppress("LongParameterList")
+private fun ExpensesScreenEffectHandler(
+    getExpensesState: Resource<List<ExpenseItem>>?,
+    expenseState: Resource<ExpenseItem>?,
+    deleteExpenseState: Resource<Unit>?,
+    onResetGetExpensesState: () -> Unit,
+    onResetExpenseState: () -> Unit,
+    onResetDeleteExpenseState: () -> Unit,
+    onEditComplete: () -> Unit,
+    onAddComplete: () -> Unit
+) {
+    val context = LocalContext.current
+
+    // Get expenses result
+    LaunchedEffect(key1 = getExpensesState) {
+        if (getExpensesState is Resource.Error) {
+            val errorMessage = getExpensesState.message
+            if (errorMessage != "User not logged in") {
+                Toast.makeText(
+                    context,
+                    errorMessage,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            onResetGetExpensesState()
+        }
+    }
+
+    // Add and Update expense result
+    LaunchedEffect(key1 = expenseState) {
+        when (expenseState) {
+            is Resource.Success -> {
+                Toast.makeText(
+                    context,
+                    "Expense saved successfully",
+                    Toast.LENGTH_SHORT
+                ).show()
+                onEditComplete()
+                onAddComplete()
+                onResetExpenseState()
+            }
+            is Resource.Error -> {
+                Toast.makeText(
+                    context,
+                    expenseState.message,
+                    Toast.LENGTH_SHORT
+                ).show()
+                onResetExpenseState()
+            }
+            else -> {}
+        }
+    }
+
+    // Delete expense result
+    LaunchedEffect(key1 = deleteExpenseState) {
+        when (deleteExpenseState) {
+            is Resource.Success -> {
+                Toast.makeText(
+                    context,
+                    "Expense deleted successfully",
+                    Toast.LENGTH_SHORT
+                ).show()
+                onResetDeleteExpenseState()
+            }
+            is Resource.Error -> {
+                Toast.makeText(
+                    context,
+                    deleteExpenseState.message,
+                    Toast.LENGTH_SHORT
+                ).show()
+                onResetDeleteExpenseState()
+            }
+            else -> {}
+        }
+    }
+}
+

@@ -31,14 +31,7 @@ fun DashboardScreen(
                 .fillMaxSize()
                 .padding(paddingValues = innerPadding)
         ) {
-
             TimeFrameTab()
-
-            // TODO: Dashboard cards
-            // Total Income
-            // Total Expense
-            // Remaining Balance
-            // Recent Transactions
         }
     }
 }
