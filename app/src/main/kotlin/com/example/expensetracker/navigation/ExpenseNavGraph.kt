@@ -9,8 +9,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.expensetracker.R
-import com.example.expensetracker.presentation.screens.auth.login.LoginScreen
 import com.example.expensetracker.presentation.screens.auth.forgot_password.ForgotPasswordScreen
+import com.example.expensetracker.presentation.screens.auth.login.LoginScreen
 import com.example.expensetracker.presentation.screens.auth.sign_up.SignUpScreen
 import com.example.expensetracker.presentation.screens.dashboard.DashboardScreen
 import com.example.expensetracker.presentation.screens.expense.ExpensesScreen

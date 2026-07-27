@@ -1,7 +1,7 @@
 package com.example.expensetracker.di
 
-import com.example.expensetracker.presentation.screens.auth.login.LoginViewModel
 import com.example.expensetracker.presentation.screens.auth.forgot_password.ForgotPasswordViewModel
+import com.example.expensetracker.presentation.screens.auth.login.LoginViewModel
 import com.example.expensetracker.presentation.screens.auth.sign_up.SignUpViewModel
 import com.example.expensetracker.presentation.screens.expense.ExpenseViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
