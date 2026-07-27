@@ -23,11 +23,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.expensetracker.R
 import com.example.expensetracker.common.Resource
-import com.example.expensetracker.presentation.components.auth.actions.SignUpFormActions
 import com.example.expensetracker.presentation.components.auth.SignUpFooter
 import com.example.expensetracker.presentation.components.auth.SignUpForm
+import com.example.expensetracker.presentation.components.auth.actions.SignUpFormActions
 import org.koin.androidx.compose.koinViewModel
-
 @Composable
 fun SignUpScreen(
     navController: NavHostController,

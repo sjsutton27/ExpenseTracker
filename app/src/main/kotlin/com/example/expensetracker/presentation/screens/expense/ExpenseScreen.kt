@@ -17,11 +17,11 @@ import androidx.navigation.NavController
 import com.example.expensetracker.R
 import com.example.expensetracker.common.Resource
 import com.example.expensetracker.data.model.expense.ExpenseItem
+import com.example.expensetracker.data.model.expense.ExpenseScreenState
 import com.example.expensetracker.presentation.components.AppHeader
+import com.example.expensetracker.presentation.components.expense.ExpenseScreenContent
 import com.example.expensetracker.presentation.screens.expense.actions.ExpenseScreenActions
 import com.example.expensetracker.presentation.screens.expense.actions.ExpenseScreenEffectActions
-import com.example.expensetracker.presentation.components.expense.ExpenseScreenContent
-import com.example.expensetracker.presentation.components.expense.ExpenseScreenState
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
