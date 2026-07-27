@@ -10,7 +10,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import com.example.expensetracker.R
 import com.example.expensetracker.presentation.components.AppHeader
-import com.example.expensetracker.presentation.components.TimeFrameTab
+import com.example.expensetracker.presentation.components.dashboard.TimeFrameTab
 
 @Composable
 fun DashboardScreen(

@@ -1,15 +1,15 @@
-package com.example.expensetracker.presentation.screens.expenses
+package com.example.expensetracker.presentation.screens.expense
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.expensetracker.common.Resource
-import com.example.expensetracker.data.model.ExpenseItem
+import com.example.expensetracker.data.model.expense.ExpenseItem
 import com.example.expensetracker.domain.use_case.expense.ExpenseUseCases
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class ExpensesViewModel(
+class ExpenseViewModel(
     private val expenseUseCases: ExpenseUseCases
 ) : ViewModel() {
     private val _expenses =

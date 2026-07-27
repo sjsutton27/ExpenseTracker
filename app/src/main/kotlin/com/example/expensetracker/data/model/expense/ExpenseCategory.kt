@@ -1,5 +1,4 @@
-@file:Suppress("MagicNumber")
-package com.example.expensetracker.data.model
+package com.example.expensetracker.data.model.expense
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AttachMoney
@@ -20,6 +19,7 @@ import androidx.compose.material.icons.filled.Subscriptions
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 
+@Suppress("MagicNumber")
 enum class ExpenseCategory(
     val displayName: String,
     val icon: ImageVector,

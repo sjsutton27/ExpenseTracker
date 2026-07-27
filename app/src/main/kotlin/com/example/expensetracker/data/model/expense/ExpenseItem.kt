@@ -1,4 +1,4 @@
-package com.example.expensetracker.data.model
+package com.example.expensetracker.data.model.expense
 
 import com.example.expensetracker.common.currentDate
 

@@ -1,4 +1,4 @@
-package com.example.expensetracker.presentation.components
+package com.example.expensetracker.presentation.components.expense
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -16,7 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.expensetracker.data.model.ExpenseItem
+import com.example.expensetracker.data.model.expense.ExpenseItem
+import com.example.expensetracker.presentation.components.expense.actions.ExpenseCardActions
 import com.example.expensetracker.ui.theme.MediumGreen
 
 @Composable
@@ -31,10 +32,12 @@ fun ExpenseSection(
             expense = ExpenseItem(),
             isEditing = true,
             isNewExpense = true,
-            onEditClick = {},
-            onCancelEdit = onCancelEdit,
-            onSaveEdit = onSaveEdit,
-            onDeleteClick = {}
+            actions = ExpenseCardActions(
+                onEditClick = {},
+                onCancelEdit = onCancelEdit,
+                onSaveEdit = onSaveEdit,
+                onDeleteClick = {}
+            )
         )
     } else {
         Box(

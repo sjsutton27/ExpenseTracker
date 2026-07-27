@@ -1,4 +1,4 @@
-package com.example.expensetracker.presentation.screens.expenses
+package com.example.expensetracker.presentation.screens.expense
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview

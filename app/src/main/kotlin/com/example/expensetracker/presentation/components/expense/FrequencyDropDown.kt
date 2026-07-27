@@ -1,4 +1,4 @@
-package com.example.expensetracker.presentation.components
+package com.example.expensetracker.presentation.components.expense
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.DropdownMenu
@@ -10,7 +10,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import com.example.expensetracker.data.model.ExpenseFrequency
+import com.example.expensetracker.data.model.expense.ExpenseFrequency
 
 @Composable
 fun FrequencyDropdown(

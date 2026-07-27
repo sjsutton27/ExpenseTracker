@@ -1,4 +1,4 @@
-package com.example.expensetracker.presentation.components
+package com.example.expensetracker.presentation.components.dashboard
 
 import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.Tab

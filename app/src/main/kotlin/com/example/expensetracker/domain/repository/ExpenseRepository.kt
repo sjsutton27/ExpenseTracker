@@ -1,7 +1,7 @@
 package com.example.expensetracker.domain.repository
 
 import com.example.expensetracker.common.Resource
-import com.example.expensetracker.data.model.ExpenseItem
+import com.example.expensetracker.data.model.expense.ExpenseItem
 import com.example.expensetracker.data.remote.responses.ExpenseImage
 import kotlinx.coroutines.flow.Flow
 

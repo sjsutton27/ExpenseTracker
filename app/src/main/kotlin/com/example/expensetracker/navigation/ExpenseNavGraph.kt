@@ -9,11 +9,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.expensetracker.R
-import com.example.expensetracker.presentation.screens.authentication.login.LoginScreen
-import com.example.expensetracker.presentation.screens.authentication.reset_password.ForgotPasswordScreen
-import com.example.expensetracker.presentation.screens.authentication.sign_up.SignUpScreen
+import com.example.expensetracker.presentation.screens.auth.login.LoginScreen
+import com.example.expensetracker.presentation.screens.auth.reset_password.ForgotPasswordScreen
+import com.example.expensetracker.presentation.screens.auth.sign_up.SignUpScreen
 import com.example.expensetracker.presentation.screens.dashboard.DashboardScreen
-import com.example.expensetracker.presentation.screens.expenses.ExpensesScreen
+import com.example.expensetracker.presentation.screens.expense.ExpensesScreen
 import com.example.expensetracker.presentation.screens.income.IncomeScreen
 import com.example.expensetracker.presentation.screens.profile.ProfileScreen
 import com.google.firebase.auth.FirebaseAuth

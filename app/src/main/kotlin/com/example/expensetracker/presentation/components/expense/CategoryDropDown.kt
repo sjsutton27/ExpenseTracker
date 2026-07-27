@@ -1,4 +1,4 @@
-package com.example.expensetracker.presentation.components
+package com.example.expensetracker.presentation.components.expense
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -17,7 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.expensetracker.data.model.ExpenseCategory
+import com.example.expensetracker.data.model.expense.ExpenseCategory
 
 @Composable
 fun CategoryDropdown(

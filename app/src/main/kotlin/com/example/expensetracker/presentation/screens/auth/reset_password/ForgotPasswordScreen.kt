@@ -1,4 +1,4 @@
-package com.example.expensetracker.presentation.screens.authentication.reset_password
+package com.example.expensetracker.presentation.screens.auth.reset_password
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Box

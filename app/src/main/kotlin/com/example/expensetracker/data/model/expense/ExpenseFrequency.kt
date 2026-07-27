@@ -1,4 +1,4 @@
-package com.example.expensetracker.data.model
+package com.example.expensetracker.data.model.expense
 
 enum class ExpenseFrequency {
     NONE,

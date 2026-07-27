@@ -1,7 +1,7 @@
 package com.example.expensetracker.data.util
 
 import com.example.expensetracker.common.Constants
-import com.example.expensetracker.data.model.ExpenseItem
+import com.example.expensetracker.data.model.expense.ExpenseItem
 import com.example.expensetracker.domain.repository.ExpenseRepository
 
 suspend fun prepareExpense(repository: ExpenseRepository, expense: ExpenseItem): ExpenseItem {

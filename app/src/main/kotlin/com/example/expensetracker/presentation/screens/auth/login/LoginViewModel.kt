@@ -1,4 +1,4 @@
-package com.example.expensetracker.presentation.screens.authentication.login
+package com.example.expensetracker.presentation.screens.auth.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
