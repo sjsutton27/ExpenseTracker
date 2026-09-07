@@ -1,6 +1,7 @@
 package com.example.expensetracker.data.model.expense
 
 import com.example.expensetracker.common.currentDate
+import com.example.expensetracker.data.model.Frequency
 
 data class ExpenseItem(
     val id: String = "",
@@ -10,6 +11,6 @@ data class ExpenseItem(
     val category: ExpenseCategory = ExpenseCategory.OTHER,
     val merchant: String = "",
     val merchantDomain: String = "",
-    val frequency: ExpenseFrequency = ExpenseFrequency.NONE,
+    val frequency: Frequency = Frequency.NONE,
     val imageUrl: String = "",
 )

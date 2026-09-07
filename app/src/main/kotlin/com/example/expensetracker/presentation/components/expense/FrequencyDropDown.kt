@@ -10,12 +10,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import com.example.expensetracker.data.model.expense.ExpenseFrequency
+import com.example.expensetracker.data.model.Frequency
 
 @Composable
 fun FrequencyDropdown(
-    selectedFrequency: ExpenseFrequency,
-    onFrequencySelected: (ExpenseFrequency) -> Unit
+    selectedFrequency: Frequency,
+    onFrequencySelected: (Frequency) -> Unit
 ) {
     var expanded by remember {
         mutableStateOf(value = false)
@@ -38,7 +38,7 @@ fun FrequencyDropdown(
                 expanded = false
             }
         ) {
-            ExpenseFrequency.entries.forEach { frequency ->
+            Frequency.entries.forEach { frequency ->
                 DropdownMenuItem(
                     text = {
                         Text(
