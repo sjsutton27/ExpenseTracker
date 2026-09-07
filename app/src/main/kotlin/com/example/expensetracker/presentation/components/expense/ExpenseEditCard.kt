@@ -27,8 +27,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.expensetracker.common.formatDate
-import com.example.expensetracker.data.model.expense.ExpenseCategory
 import com.example.expensetracker.data.model.Frequency
+import com.example.expensetracker.data.model.expense.ExpenseCategory
 import com.example.expensetracker.data.model.expense.ExpenseItem
 import com.example.expensetracker.presentation.components.expense.actions.BasicInfoActions
 import com.example.expensetracker.presentation.components.expense.actions.DetailSelectorActions

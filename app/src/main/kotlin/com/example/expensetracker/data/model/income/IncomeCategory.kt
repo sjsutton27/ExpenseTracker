@@ -2,6 +2,7 @@ package com.example.expensetracker.data.model.income
 
 import androidx.compose.ui.graphics.Color
 
+@Suppress("MagicNumber")
 enum class IncomeCategory(
     val displayName: String,
     val color: Color
