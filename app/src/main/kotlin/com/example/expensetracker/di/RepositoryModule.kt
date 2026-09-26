@@ -2,8 +2,10 @@ package com.example.expensetracker.di
 
 import com.example.expensetracker.data.repository.AuthRepositoryImpl
 import com.example.expensetracker.data.repository.ExpenseRepositoryImpl
+import com.example.expensetracker.data.repository.IncomeRepositoryImpl
 import com.example.expensetracker.domain.repository.AuthRepository
 import com.example.expensetracker.domain.repository.ExpenseRepository
+import com.example.expensetracker.domain.repository.IncomeRepository
 import org.koin.dsl.module
 
 val repositoryModule = module {
@@ -17,6 +19,12 @@ val repositoryModule = module {
             auth = get(),
             database = get(),
             logoApi = get()
+        )
+    }
+    single<IncomeRepository> {
+        IncomeRepositoryImpl(
+            auth = get(),
+            database = get()
         )
     }
 }

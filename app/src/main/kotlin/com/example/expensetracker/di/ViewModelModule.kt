@@ -4,6 +4,7 @@ import com.example.expensetracker.presentation.screens.auth.forgot_password.Forg
 import com.example.expensetracker.presentation.screens.auth.login.LoginViewModel
 import com.example.expensetracker.presentation.screens.auth.sign_up.SignUpViewModel
 import com.example.expensetracker.presentation.screens.expense.ExpenseViewModel
+import com.example.expensetracker.presentation.screens.income.IncomeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -26,6 +27,11 @@ val viewModelModule = module {
     viewModel {
         ForgotPasswordViewModel(
             forgotPasswordUseCase = get()
+        )
+    }
+    viewModel {
+        IncomeViewModel(
+            incomeUseCases = get()
         )
     }
 }
