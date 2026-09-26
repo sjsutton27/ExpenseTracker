@@ -67,7 +67,7 @@ val useCaseModule = module {
             repository = get()
         )
     }
-    factory{
+    factory {
         DeleteExpenseUseCase(
             repository = get()
         )

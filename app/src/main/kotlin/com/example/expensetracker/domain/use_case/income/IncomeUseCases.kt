@@ -1,6 +1,6 @@
 package com.example.expensetracker.domain.use_case.income
 
-class IncomeUseCases (
+class IncomeUseCases(
     val addIncomeUseCase: AddIncomeUseCase,
     val updateIncomeUseCase: UpdateIncomeUseCase,
     val deleteIncomeUseCase: DeleteIncomeUseCase,
