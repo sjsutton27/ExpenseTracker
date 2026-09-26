@@ -1,4 +1,4 @@
-package com.example.expensetracker.presentation.components.expense
+package com.example.expensetracker.presentation.components.expense.card
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -30,6 +30,8 @@ import com.example.expensetracker.common.formatDate
 import com.example.expensetracker.data.model.Frequency
 import com.example.expensetracker.data.model.expense.ExpenseCategory
 import com.example.expensetracker.data.model.expense.ExpenseItem
+import com.example.expensetracker.presentation.components.expense.drop_down.CategoryDropdown
+import com.example.expensetracker.presentation.components.expense.drop_down.FrequencyDropdown
 import com.example.expensetracker.presentation.components.expense.actions.BasicInfoActions
 import com.example.expensetracker.presentation.components.expense.actions.DetailSelectorActions
 

@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.expensetracker.data.model.expense.ExpenseItem
 import com.example.expensetracker.presentation.components.expense.actions.ExpenseCardActions
+import com.example.expensetracker.presentation.components.expense.card.ExpenseCard
 import com.example.expensetracker.ui.theme.MediumGreen
 
 @Composable

@@ -1,4 +1,4 @@
-package com.example.expensetracker.presentation.components.expense
+package com.example.expensetracker.presentation.components.expense.card
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

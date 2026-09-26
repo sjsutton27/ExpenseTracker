@@ -16,7 +16,7 @@ class LoginUseCase(private val repository: AuthRepository) {
 
         if (errorMessage != null) {
             return flow {
-                emit(value = Resource.Error(errorMessage))
+                emit(value = Resource.Error(message = errorMessage))
             }
         }
         return repository.login(email, password)

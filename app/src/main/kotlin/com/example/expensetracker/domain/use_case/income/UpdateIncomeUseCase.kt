@@ -9,6 +9,6 @@ class UpdateIncomeUseCase(
     private val repository: IncomeRepository
 ) {
     operator fun invoke(income: IncomeItem): Flow<Resource<IncomeItem>> {
-        return repository.updateIncome(income)
+        return repository.updateIncome(income = income)
     }
 }
