@@ -1,4 +1,4 @@
-package com.example.expensetracker.presentation.components.expense.drop_down
+package com.example.expensetracker.presentation.income.drop_down
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -17,12 +17,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.expensetracker.data.model.expense.ExpenseCategory
+import com.example.expensetracker.data.model.income.IncomeCategory
 
 @Composable
-fun CategoryDropdown(
-    selectedCategory: ExpenseCategory,
-    onCategorySelected: (ExpenseCategory) -> Unit
+fun IncomeCategoryDropDown(
+    selectedCategory: IncomeCategory,
+    onCategorySelected: (IncomeCategory) -> Unit
 ) {
     var expanded by remember {
         mutableStateOf(false)
@@ -54,7 +54,7 @@ fun CategoryDropdown(
                 expanded = false
             }
         ) {
-            ExpenseCategory.entries.forEach { category ->
+            IncomeCategory.entries.forEach { category ->
                 DropdownMenuItem(
                     text = {
                         Row(

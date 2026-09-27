@@ -30,10 +30,10 @@ import com.example.expensetracker.common.formatDate
 import com.example.expensetracker.data.model.Frequency
 import com.example.expensetracker.data.model.expense.ExpenseCategory
 import com.example.expensetracker.data.model.expense.ExpenseItem
-import com.example.expensetracker.presentation.components.expense.drop_down.CategoryDropdown
-import com.example.expensetracker.presentation.components.expense.drop_down.FrequencyDropdown
-import com.example.expensetracker.presentation.components.expense.actions.BasicInfoActions
-import com.example.expensetracker.presentation.components.expense.actions.DetailSelectorActions
+import com.example.expensetracker.presentation.components.expense.drop_down.ExpenseCategoryDropDown
+import com.example.expensetracker.presentation.components.drop_down.FrequencyDropdown
+import com.example.expensetracker.presentation.components.actions.BasicInfoActions
+import com.example.expensetracker.presentation.components.expense.actions.ExpenseDetailSelectorActions
 
 @Composable
 fun ExpenseEditCard(
@@ -96,7 +96,7 @@ fun ExpenseEditCard(
                 date = date,
                 category = category,
                 frequency = frequency,
-                actions = DetailSelectorActions(
+                actions = ExpenseDetailSelectorActions(
                     onDateChange = { date = it },
                     onCategoryChange = { category = it },
                     onFrequencyChange = { frequency = it }
@@ -162,7 +162,7 @@ private fun ExpenseDetailSelectors(
     date: Long,
     category: ExpenseCategory,
     frequency: Frequency,
-    actions: DetailSelectorActions
+    actions: ExpenseDetailSelectorActions
 ) {
     var showDatePicker by remember { mutableStateOf(value = false) }
     val datePickerState = rememberDatePickerState(initialSelectedDateMillis = date)
@@ -190,7 +190,7 @@ private fun ExpenseDetailSelectors(
     }
 
     Spacer(modifier = Modifier.size(size = 8.dp))
-    CategoryDropdown(
+    ExpenseCategoryDropDown(
         selectedCategory = category,
         onCategorySelected = actions.onCategoryChange
     )
