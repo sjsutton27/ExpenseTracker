@@ -1,4 +1,4 @@
-package com.example.expensetracker.presentation.income.drop_down
+package com.example.expensetracker.presentation.components.income.drop_down
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row

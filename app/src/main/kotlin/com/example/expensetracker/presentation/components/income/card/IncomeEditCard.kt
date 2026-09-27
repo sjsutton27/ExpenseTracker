@@ -1,4 +1,4 @@
-package com.example.expensetracker.presentation.income.card
+package com.example.expensetracker.presentation.components.income.card
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -32,8 +32,8 @@ import com.example.expensetracker.data.model.income.IncomeCategory
 import com.example.expensetracker.data.model.income.IncomeItem
 import com.example.expensetracker.presentation.components.actions.BasicInfoActions
 import com.example.expensetracker.presentation.components.drop_down.FrequencyDropdown
-import com.example.expensetracker.presentation.income.actions.IncomeDetailSelectorActions
-import com.example.expensetracker.presentation.income.drop_down.IncomeCategoryDropDown
+import com.example.expensetracker.presentation.components.income.actions.IncomeDetailSelectorActions
+import com.example.expensetracker.presentation.components.income.drop_down.IncomeCategoryDropDown
 
 @Composable
 fun IncomeEditCard(
