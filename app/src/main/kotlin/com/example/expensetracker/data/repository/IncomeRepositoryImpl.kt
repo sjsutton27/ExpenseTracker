@@ -25,10 +25,10 @@ class IncomeRepositoryImpl(
 
     private fun getIncomeRef(): DatabaseReference? {
         val id = userId ?: return null
-
         return database.reference
-            .child("income")
+            .child("Users")
             .child(id)
+            .child("income")
     }
 
     override fun addIncome(

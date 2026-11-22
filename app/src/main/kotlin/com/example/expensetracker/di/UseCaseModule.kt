@@ -9,6 +9,8 @@ import com.example.expensetracker.domain.use_case.expense.ExpenseUseCases
 import com.example.expensetracker.domain.use_case.expense.GetExpensesUseCase
 import com.example.expensetracker.domain.use_case.expense.UpdateExpenseUseCase
 import com.example.expensetracker.domain.use_case.income.AddIncomeUseCase
+import com.example.expensetracker.domain.use_case.income.DeleteIncomeUseCase
+import com.example.expensetracker.domain.use_case.income.GetIncomeUseCase
 import com.example.expensetracker.domain.use_case.income.IncomeUseCases
 import com.example.expensetracker.domain.use_case.income.UpdateIncomeUseCase
 import org.koin.dsl.module
@@ -68,12 +70,12 @@ val useCaseModule = module {
         )
     }
     factory {
-        DeleteExpenseUseCase(
+        DeleteIncomeUseCase(
             repository = get()
         )
     }
     factory {
-        GetExpensesUseCase(
+        GetIncomeUseCase(
             repository = get()
         )
     }

@@ -30,10 +30,10 @@ import com.example.expensetracker.common.formatDate
 import com.example.expensetracker.data.model.Frequency
 import com.example.expensetracker.data.model.expense.ExpenseCategory
 import com.example.expensetracker.data.model.expense.ExpenseItem
-import com.example.expensetracker.presentation.components.expense.drop_down.ExpenseCategoryDropDown
-import com.example.expensetracker.presentation.components.drop_down.FrequencyDropdown
 import com.example.expensetracker.presentation.components.actions.BasicInfoActions
+import com.example.expensetracker.presentation.components.drop_down.FrequencyDropdown
 import com.example.expensetracker.presentation.components.expense.actions.ExpenseDetailSelectorActions
+import com.example.expensetracker.presentation.components.expense.drop_down.ExpenseCategoryDropDown
 
 @Composable
 fun ExpenseEditCard(
@@ -97,9 +97,9 @@ fun ExpenseEditCard(
                 category = category,
                 frequency = frequency,
                 actions = ExpenseDetailSelectorActions(
-                    onDateChange = { date = it },
-                    onCategoryChange = { category = it },
-                    onFrequencyChange = { frequency = it }
+                    onDateChange = { dateChange -> date = dateChange },
+                    onCategoryChange = { categoryChange -> category = categoryChange },
+                    onFrequencyChange = { frequencyChange -> frequency = frequencyChange }
                 )
             )
 

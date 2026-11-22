@@ -42,7 +42,7 @@ fun IncomeEditCard(
     onSaveEdit: (IncomeItem) -> Unit,
     modifier: Modifier = Modifier,
     isNewIncome: Boolean = false
-){
+) {
     var title by remember(key1 = income.id) {
         mutableStateOf(value = income.title)
     }
@@ -80,10 +80,9 @@ fun IncomeEditCard(
                 title = title,
                 amount = amount,
                 actions = BasicInfoActions(
-                    onTitleChange = { title = it },
-                    onAmountChange = { amount = it },
-
-                    ),
+                    onTitleChange = { titleChange -> title = titleChange },
+                    onAmountChange = { amountChange -> amount = amountChange },
+                ),
             )
 
             Spacer(modifier = Modifier.size(size = 8.dp))
@@ -93,9 +92,9 @@ fun IncomeEditCard(
                 category = category,
                 frequency = frequency,
                 actions = IncomeDetailSelectorActions(
-                    onDateChange = { date = it },
-                    onCategoryChange = { category = it },
-                    onFrequencyChange = { frequency = it }
+                    onDateChange = { dateChange -> date = dateChange },
+                    onCategoryChange = { categoryChange -> category = categoryChange },
+                    onFrequencyChange = { frequencyChange -> frequency = frequencyChange }
                 )
             )
 

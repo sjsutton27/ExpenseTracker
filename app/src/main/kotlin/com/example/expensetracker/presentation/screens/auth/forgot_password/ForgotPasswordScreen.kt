@@ -42,9 +42,12 @@ fun ForgotPasswordScreen(
         when (forgotPasswordState) {
             is Resource.Success -> {
                 Toast.makeText(
-                    /* context = */ context,
-                    /* text = */ (forgotPasswordState as Resource.Success).data,
-                    /* duration = */ Toast.LENGTH_SHORT
+                    /* context = */
+                    context,
+                    /* text = */
+                    (forgotPasswordState as Resource.Success).data,
+                    /* duration = */
+                    Toast.LENGTH_SHORT
                 ).show()
                 viewModel.resetState()
                 navController.navigate(route = loginRoute) {
@@ -55,9 +58,12 @@ fun ForgotPasswordScreen(
             }
             is Resource.Error -> {
                 Toast.makeText(
-                    /* context = */ context,
-                    /* text = */ (forgotPasswordState as Resource.Error).message,
-                    /* duration = */ Toast.LENGTH_SHORT
+                    /* context = */
+                    context,
+                    /* text = */
+                    (forgotPasswordState as Resource.Error).message,
+                    /* duration = */
+                    Toast.LENGTH_SHORT
                 ).show()
                 viewModel.resetState()
             }

@@ -1,0 +1,2 @@
+- [x] Implement IncomeSection.kt component
+- [x] Build project and verify compilation & detekt checks
